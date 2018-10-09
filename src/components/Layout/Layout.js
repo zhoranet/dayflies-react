@@ -18,16 +18,24 @@ class layout extends Component {
         this.setState({showSiteDrawer: true});
     }
 
+    sideDrawerToggleHandler = () => {
+        this.setState({showSiteDrawer: !this.state.showSiteDrawer});
+    }
+
     render() {
         return (
             <React.Fragment>
-                <Title/>
-                <Toolbar/>
+                <Title/>                
                 <div className={classes.Layout}>                    
-                    <SideDrawer/>
-                    <div className={classes.Content}>                        
-                        {this.props.children}
-                    </div>
+                    <SideDrawer 
+                        open={this.state.showSiteDrawer} 
+                        onClose={this.sideDrawerClosedHandler}/>
+                    <div className={classes.Container}>
+                        <Toolbar toggleDrawer={this.sideDrawerToggleHandler}/>                        
+                        <div className={classes.Content}>                        
+                            {this.props.children}
+                        </div>
+                    </div>                    
                 </div>                
             </React.Fragment>
         );    

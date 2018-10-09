@@ -5,7 +5,7 @@ import classes from './Toolbar.css'
 const toolbar = (props) => {
     return (
         <div className={classes.Toolbar}>
-            <div>There is a toolbar</div>
+            <button onClick={props.toggleDrawer}>Toggle Drawer</button>
         </div>
     );
 }

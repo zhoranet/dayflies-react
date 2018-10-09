@@ -3,8 +3,10 @@ import classes from './SideDrawer.css'
 
 const sideDrawer = (props) => {
     
+    const sideDrawerClass = classes.SideDrawer + ' ' + (props.open ? classes.Open : classes.Close);
+
     return (
-        <div className={classes.SideDrawer}>Side drawer</div>
+        <div className={sideDrawerClass} onClick={props.onClose}>Side drawer</div>
     );
 
 }

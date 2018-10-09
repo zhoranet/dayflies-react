@@ -1,12 +1,41 @@
 .Layout {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-  }
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: row
+}
+
+.Container {
+  display: flex; 
+  flex-direction: column;
+}
 
 .Content {
-   flex: 2; 
+   
+}
+
+@media (min-width: 400px) {
+  .SideDrawer {
+      position: relative;
+      opacity: 1; 
+      margin-left: 0;
+  }
+
+  .Layout {
+    background: red;
+  }
+}
+
+.TestLayout {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.TestContent {
+ flex: 1; 
 }
 
