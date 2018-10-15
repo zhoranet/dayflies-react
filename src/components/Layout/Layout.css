@@ -3,39 +3,37 @@
   margin: 0;
   position: relative;
   display: flex;
-  flex-direction: row
+  flex-direction: row;  
+  flex: 1 1 auto;
 }
 
 .Container {
   display: flex; 
   flex-direction: column;
+  flex: 2 2 auto;
 }
 
 .Content {
    
 }
 
-@media (min-width: 400px) {
-  .SideDrawer {
-      position: relative;
-      opacity: 1; 
-      margin-left: 0;
-  }
-
-  .Layout {
-    background: red;
-  }
-}
-
-.TestLayout {
-  height: 100%;
-  padding: 0;
-  margin: 0;
+.MyApp {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;  
+  height: 100vh;
+
+  
 }
 
-.TestContent {
- flex: 1; 
+.MainContent {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;  
+}
+
+.Footer {  
+  flex: 0 0 auto;
+  padding: 20px;
+  background-color: lightgray;
 }
 

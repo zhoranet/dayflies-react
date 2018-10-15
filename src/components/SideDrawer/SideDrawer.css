@@ -8,18 +8,26 @@
     padding: 32px 16px;
     z-index: 1;
     opacity: 1;
+    flex: 1 1 180px;
+    
 }
-
-
 
 .Open {
     opacity: 1;    
     margin-left: 0;
 }
 
-.Close {
-        
+.Close {        
     opacity: 0;
     margin-left: -180px;
 }
 
+@media (min-width: 768px) {
+    .SideDrawer {
+        position: relative;
+        opacity: 1; 
+        margin-left: 0;
+        flex: 1 1 180px;
+    }
+  }
+  
