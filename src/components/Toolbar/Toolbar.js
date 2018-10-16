@@ -11,6 +11,9 @@ const toolbar = (props) => {
                 <Button clicked={props.toggleDrawer}>
                     <FontAwesomeIcon icon="bars" size="2x"/>
                 </Button>
+            </div>
+            <div className={classes.Title}>
+                <h1>{props.title}</h1>
             </div>            
         </div>
     );
