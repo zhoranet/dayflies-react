@@ -1,4 +1,16 @@
 .Layout {
+  display: flex;
+  flex-direction: column;  
+  height: 100vh;  
+}
+
+.MainContainer {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;  
+}
+
+.SideDrawerContainer {
   padding: 0;
   margin: 0;
   position: relative;
@@ -7,33 +19,16 @@
   flex: 1 1 auto;
 }
 
-.Container {
+.ToolbarContainer {
   display: flex; 
   flex-direction: column;
   flex: 2 2 auto;
 }
 
-.Content {
+.ContentContainer {
    
 }
 
-.MyApp {
-  display: flex;
-  flex-direction: column;  
-  height: 100vh;
 
-  
-}
 
-.MainContent {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;  
-}
-
-.Footer {  
-  flex: 0 0 auto;
-  padding: 20px;
-  background-color: lightgray;
-}
 

@@ -3,12 +3,12 @@
     top: 0;
     bottom: 0;
     transition: all 0.2s ease-in-out;    
-    width: 180px;
-    background-color: lightgrey;
-    padding: 32px 16px;
+    width: 400px;
+    background-color:var(--backgroundDefault);
+    padding: 8px 8px;
     z-index: 1;
     opacity: 1;
-    flex: 1 1 180px;
+    flex: 1 1 500px;
     
 }
 
@@ -19,7 +19,7 @@
 
 .Close {        
     opacity: 0;
-    margin-left: -180px;
+    margin-left: -500px;
 }
 
 @media (min-width: 768px) {
@@ -27,7 +27,7 @@
         position: relative;
         opacity: 1; 
         margin-left: 0;
-        flex: 1 1 180px;
+        flex: 1 1 500px;
     }
   }
   

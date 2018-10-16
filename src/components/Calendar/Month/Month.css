@@ -1,0 +1,28 @@
+.Month {
+    max-width: 320px;
+    margin: 10px auto;
+    border: 1px solid var(--backgroundColor);
+    z-index: 99;
+}
+
+.MonthHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;    
+}
+
+.WeekHeader {
+    display: flex;  
+    background-color: var(--shadeLightColor);
+    height: 2em;
+}
+
+.WeekHeader > div {
+    flex: 1 1 0;
+    color: var(--backgroundDefault);
+    padding: 1px;
+    text-align: center;
+    box-shadow: 
+        -1px -1px var(--shadeDarkColor), 
+        inset -1px -1px 0 0;
+}

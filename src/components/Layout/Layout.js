@@ -3,8 +3,7 @@ import classes from './Layout.css'
 import Title from '../Title/Title'
 import Toolbar from '../Toolbar/Toolbar'
 import SideDrawer from '../SideDrawer/SideDrawer';
-
-
+import Footer from '../Footer/Footer';
 
 class layout extends Component {
 
@@ -27,24 +26,22 @@ class layout extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className={classes.MyApp}>
-                    <div className={classes.MainContent}>
+                <div className={classes.Layout}>
+                    <div className={classes.MainContainer}>
                         <Title/>                
-                        <div className={classes.Layout}>                    
+                        <div className={classes.SideDrawerContainer}>                    
                             <SideDrawer 
                                 open={this.state.showSiteDrawer} 
                                 onClose={this.sideDrawerClosedHandler}/>
-                            <div className={classes.Container}>
+                            <div className={classes.ToolbarContainer}>
                                 <Toolbar toggleDrawer={this.sideDrawerToggleHandler}/>                        
-                                <div className={classes.Content}>                        
+                                <div className={classes.ContentContainer}>                        
                                     {this.props.children}
                                 </div>
                             </div>                    
                         </div>
                     </div>
-                    <div className={classes.Footer}>
-                        My Footer
-                    </div>
+                    <Footer/>
                 </div>          
             </React.Fragment>
         );    

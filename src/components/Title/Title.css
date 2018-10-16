@@ -1,11 +1,18 @@
 .Title {        
     width:100%;
-    display: flex;
+    display: none;
     height:60px;    
     align-items: center;
     flex: 0 0 auto;
+    
 }
 
 .Title h1 {
     padding:3px 15px;
 }
+
+@media (min-width: 768px) {
+    .Title {
+        display: flex;        
+    }
+  }

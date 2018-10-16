@@ -1,0 +1,6 @@
+.Footer {  
+    flex: 0 0 auto;
+    padding: 20px;
+    background-color:var(--shadeLightColor);
+    color: var(--backgroundDefault);
+}

@@ -2,14 +2,24 @@
     width:100%;
     display: flex;
     height:60px;
-    background:#084e48;
-    align-items: center;
+    background: var(--shadeDarkColor);
+    align-items: center;          
 }
 
-.Toolbar div {
-    color:#fff;
-    padding:3px 15px;
+.NavigationListConatiner {
+    margin-left: 10px;
 }
+
+@media (min-width: 768px) {
+    .NavigationListConatiner {
+        display: none;
+    }
+    .Toolbar { 
+        background: var(--backgroundDeafult);   
+    }
+  }
+
+
 
 .Toolbar div:hover {
     background: rgba(250,250,250,0.3);
