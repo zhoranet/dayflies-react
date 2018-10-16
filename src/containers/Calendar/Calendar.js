@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import classes from './Calendar.css';
 import Month from '../../components/Calendar/Month/Month';
+import { connect } from 'react-redux';
+import * as actions from "../../store/actions";
+
 
 class Calendar extends Component {
 
-    state = {
-        selectedDate: new Date()
+    componentWillMount () {        
+        //this.props.onSelectDate(new Date());
     }
 
     getWeeksInMonth(month, year) {
@@ -57,34 +60,43 @@ class Calendar extends Component {
         return week;
     }
 
-    onDaySelected = (day) => {
-        console.log('day selected', day);
-
-        this.setState({ selectedDate: new Date(
-            this.state.selectedDate.getFullYear(), 
-            this.state.selectedDate.getMonth(), 
-            day) })
-
-    }
+    
 
     render() {
 
-        const weeks = this.getWeeksInMonth(this.state.selectedDate.getMonth(), 
-                this.state.selectedDate.getFullYear())
+        let calendar = null;
+
+        if(this.props.date) {
+        
+            const weeks = this.getWeeksInMonth(this.props.date.getMonth(), 
+                this.props.date.getFullYear())
             .map(w => this.getNormalizedWeekArray(w.start, w.end));
 
+            calendar = <div className={classes.Calendar}>                
+                    <Month weeks={weeks} date={this.props.date} onDaySelected={this.props.onSelectDay}/>
+                </div>;
+        }
+
+        
         return (
             <div>
-                <div className={classes.Calendar}>                
-                    <Month weeks={weeks} date={this.state.selectedDate} onDaySelected={this.onDaySelected}/>
-                </div>
-            
-                <p>Selected date: {this.state.selectedDate.toDateString()}</p>
-
+                {calendar}
             </div>
             
         );
     }
 }
 
-export default Calendar;
+const mapStateToProps = state => {
+    return {
+        date: state.selectedDate,
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSelectDay: (day) => dispatch(actions.selectDate(new Date(2018, 10, day)))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
