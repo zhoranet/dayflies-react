@@ -73,7 +73,11 @@ class Calendar extends Component {
             .map(w => this.getNormalizedWeekArray(w.start, w.end));
 
             calendar = <div className={classes.Calendar}>                
-                    <Month weeks={weeks} date={this.props.date} onDaySelected={this.props.onSelectDay}/>
+                    <Month weeks={weeks} 
+                        date={this.props.date} 
+                        onDaySelected={this.props.onSelectDay}
+                        onPrevMonth={this.props.onPrevMonth}
+                        onNextMonth={this.props.onNextMonth}/>
                 </div>;
         }
 
@@ -95,7 +99,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSelectDay: (day) => dispatch(actions.selectDate(new Date(2018, 10, day)))
+        onSelectDay: (day) => dispatch(actions.selectDay(day)),
+        onPrevMonth: () => dispatch(actions.prevMonth()),
+        onNextMonth: () => dispatch(actions.nextMonth())
     };
 }
 

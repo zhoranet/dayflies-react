@@ -1,5 +1,8 @@
 export { 
     selectDate,
+    selectDay,
     nextDay,
-    prevDay
+    prevDay,
+    prevMonth,
+    nextMonth,
 } from './calendar';

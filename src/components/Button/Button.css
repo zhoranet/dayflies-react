@@ -28,10 +28,7 @@
     color: #944317;
 }
 
-.Previous {
+.Calendar {
     color: var(--shadeDarkColor);
 }
 
-.Next {
-    color: var(--shadeDarkColor);
-}

@@ -7,6 +7,13 @@ export const selectDate = date => {
     }
 };
 
+export const selectDay = day => {
+    return {
+        type: actionTypes.SELECT_DAY,
+        selectedDay: day
+    }
+};
+
 export const nextDay = () => {
     return {
         type: actionTypes.NEXT_DAY        
@@ -16,5 +23,17 @@ export const nextDay = () => {
 export const prevDay = day => {
     return {
         type: actionTypes.PREV_DAY
+    }
+};
+
+export const prevMonth = () => {
+    return {
+        type: actionTypes.PREV_MONTH
+    }
+};
+
+export const nextMonth = () => {
+    return {
+        type: actionTypes.NEXT_MONTH
     }
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import Week from '../Week/Week';
 import classes from './Month.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '../../Button/Button';
+
 
 const getMonthName = (date) => {    
     const mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -22,9 +24,9 @@ const month = (props) => {
     return (
         <div className={classes.Month}>
             <div className={classes.MonthHeader}>                
-                <div><FontAwesomeIcon icon="chevron-left" /></div>
+                <Button btnType="Calendar" clicked={props.onPrevMonth}><FontAwesomeIcon icon="chevron-left" /></Button>
                 <div>{monthName} {props.date.getFullYear()}</div>
-                <div><FontAwesomeIcon icon="chevron-right" /></div>
+                <Button btnType="Calendar" clicked={props.onNextMonth}><FontAwesomeIcon icon="chevron-right" /></Button>
             </div>
             <div className={classes.WeekHeader}>
                 <div >Su</div>

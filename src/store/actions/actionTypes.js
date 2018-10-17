@@ -1,3 +1,9 @@
 export const SELECT_DATE = 'SELECT_DATE';
+export const SELECT_DAY = 'SELECT_DAY';
 export const NEXT_DAY = 'NEXT_DAY';
 export const PREV_DAY = 'PREV_DAY';
+export const PREV_MONTH = 'PREV_MONTH';
+export const NEXT_MONTH = 'NEXT_MONTH';
+export const FETCH_EVENTS_START = 'FETCH_EVENTS_START';
+export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
+export const FETCH_EVENTS_FAIL = 'FETCH_EVENTS_FAIL';
