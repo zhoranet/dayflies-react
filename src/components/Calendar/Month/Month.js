@@ -22,9 +22,9 @@ const month = (props) => {
     return (
         <div className={classes.Month}>
             <div className={classes.MonthHeader}>                
-                <div><FontAwesomeIcon icon="angle-left" /></div>
+                <div><FontAwesomeIcon icon="chevron-left" /></div>
                 <div>{monthName} {props.date.getFullYear()}</div>
-                <div><FontAwesomeIcon icon="angle-right" /></div>
+                <div><FontAwesomeIcon icon="chevron-right" /></div>
             </div>
             <div className={classes.WeekHeader}>
                 <div >Su</div>

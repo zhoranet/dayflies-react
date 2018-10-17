@@ -27,3 +27,11 @@
 .Danger {
     color: #944317;
 }
+
+.Previous {
+    color: var(--shadeDarkColor);
+}
+
+.Next {
+    color: var(--shadeDarkColor);
+}

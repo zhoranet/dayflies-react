@@ -11,9 +11,19 @@ const selectDate = (state, action) => {
     } );
 };
 
+
+const incrementDate = (state, step) => {
+
+    var newDate = new Date(state.selectedDate);
+    newDate.setDate(newDate.getDate() + step);
+    return updateObject( state, {selectedDate: newDate} );
+};
+
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.SELECT_DATE: return selectDate( state, action );
+        case actionTypes.NEXT_DAY: return incrementDate( state, 1 );
+        case actionTypes.PREV_DAY: return incrementDate( state, -1 );
         default: return state;
     }
 };

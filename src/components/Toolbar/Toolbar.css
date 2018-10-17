@@ -12,26 +12,12 @@
 
 .Title {
     color: var(--backgroundDefault);
-    padding-left: 10px;
-    text-align: center;
+    padding-left: 10px;    
 }
 
-@media (min-width: 768px) {
-    .NavigationListConatiner {
-        display: none;
-    }
+@media (min-width: 768px) {    
     .Toolbar { 
-        background: var(--backgroundDeafult); 
-        height: 30px;
-        padding-left: auto;
-    }
-    .Title {
-        color: var(--ascentDarkColor);        
-    }
+        display: none;
+    }    
   }
 
-
-
-.Toolbar div:hover {
-    background: rgba(250,250,250,0.3);
-}

@@ -6,3 +6,15 @@ export const selectDate = date => {
         selectedDate: date
     }
 };
+
+export const nextDay = () => {
+    return {
+        type: actionTypes.NEXT_DAY        
+    }
+};
+
+export const prevDay = day => {
+    return {
+        type: actionTypes.PREV_DAY
+    }
+};
