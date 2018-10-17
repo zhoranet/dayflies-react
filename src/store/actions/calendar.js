@@ -1,39 +1,27 @@
 import * as actionTypes from './actionTypes';
 
-export const selectDate = date => {
+const selectDate = date => {
     return {
         type: actionTypes.SELECT_DATE,
         selectedDate: date
     }
 };
 
-export const selectDay = day => {
-    return {
-        type: actionTypes.SELECT_DAY,
-        selectedDay: day
-    }
-};
+const incrementDay = (date, step) => {
+    var newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + step);
+    return selectDate(newDate);
+}
 
-export const nextDay = () => {
-    return {
-        type: actionTypes.NEXT_DAY        
-    }
-};
+const incrementMonth = (date, step) => {
+    var newDate = new Date(date);
+    newDate.setMonth(newDate.getMonth() + step);
+    return selectDate(newDate);
+}
 
-export const prevDay = day => {
-    return {
-        type: actionTypes.PREV_DAY
-    }
-};
+export const selectDay = (year, month, day) => selectDate(new Date(year, month, day));
+export const prevDay = date =>  incrementDay(date, -1);
+export const nextDay = date => incrementDay(date, 1);
+export const prevMonth = date => incrementMonth(date, -1);
+export const nextMonth = date => incrementMonth(date, 1);
 
-export const prevMonth = () => {
-    return {
-        type: actionTypes.PREV_MONTH
-    }
-};
-
-export const nextMonth = () => {
-    return {
-        type: actionTypes.NEXT_MONTH
-    }
-};

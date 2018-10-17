@@ -10,8 +10,8 @@ const sideDrawer = (props) => {
     return (
         <React.Fragment>
             <Backdrop show={props.open} clicked={props.onClose}/>
-            <div className={sideDrawerClass} onClick={props.onClose}>
-                <Calendar/>
+            <div className={sideDrawerClass}>
+                <Calendar closeCalendar={props.onClose}/>
             </div>
         </React.Fragment>
         

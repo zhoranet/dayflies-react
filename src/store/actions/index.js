@@ -1,5 +1,4 @@
 export { 
-    selectDate,
     selectDay,
     nextDay,
     prevDay,

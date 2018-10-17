@@ -17,11 +17,11 @@ class EventList extends Component {
 
             <div className={classes.EventList}>
                 <div className={classes.EventListHeader}>
-                    <Button btnType="Calendar" clicked={this.props.onPrevDay} ><FontAwesomeIcon icon="chevron-left" /></Button>
+                    <Button btnType="Calendar" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="chevron-left" /></Button>
                     <div>
                         <h1>{this.props.date.toDateString()}</h1>
                     </div>
-                    <Button btnType="Calendar" clicked={this.props.onNextDay}><FontAwesomeIcon icon="chevron-right" /></Button>
+                    <Button btnType="Calendar" clicked={() => this.props.onNextDay(this.props.date)}><FontAwesomeIcon icon="chevron-right" /></Button>
                 </div>
                 {events}
             </div>
@@ -37,10 +37,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onSelectDay: (day) => dispatch(actions.selectDate(day)),
-        onNextDay: () => dispatch(actions.nextDay()),
-        onPrevDay: () => dispatch(actions.prevDay())
+    return {        
+        onNextDay: (date) => dispatch(actions.nextDay(date)),
+        onPrevDay: (date) => dispatch(actions.prevDay(date))
     };
 }
 
