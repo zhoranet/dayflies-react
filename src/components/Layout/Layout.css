@@ -22,7 +22,7 @@
 .ToolbarContainer {
   display: flex; 
   flex-direction: column;
-  flex: 2 2 auto;
+  flex: 2 2 600px;
 }
 
 .ContentContainer {

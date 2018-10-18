@@ -14,13 +14,15 @@
 .Day:hover {
     font-weight: bolder;
     line-height: 4em;
-    background-color: var(--ascentDarkColor);
-    color: var(--backgroundDefault);
+    color: var(--ascentDarkColor); 
     
 }
 
 .selected {
-    color: var(--ascentDarkColor);
+   
     font-weight: bolder;
     line-height: 4em;
+    background-color: var(--ascentLightColor);
+    color: var(--backgroundDefault);
+    border-radius: 50%;
 }
