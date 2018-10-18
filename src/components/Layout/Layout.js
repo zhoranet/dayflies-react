@@ -36,7 +36,7 @@ class Layout extends Component {
                                 open={this.state.showSiteDrawer} 
                                 onClose={this.sideDrawerClosedHandler}/>
                             <div className={classes.ToolbarContainer}>
-                                <Toolbar toggleDrawer={this.sideDrawerToggleHandler} title='My App'/>                        
+                                <Toolbar toggleDrawer={this.sideDrawerToggleHandler} title='Unknown'/>                        
                                 <div className={classes.ContentContainer}>                        
                                     {this.props.children}
                                 </div>
