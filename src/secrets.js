@@ -1,1 +1,0 @@
-export const API_URL = 'https://dayflies-7c5f0.firebaseio.com/'; //'SECRET_API_URL';
