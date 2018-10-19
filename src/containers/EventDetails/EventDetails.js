@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Button from '../../components/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as actions from "../../store/actions";
+import { Link } from 'react-router-dom';
 
 class EventDetails extends Component {
 
@@ -14,21 +15,67 @@ class EventDetails extends Component {
         }        
     }
 
+    getEventDetailsById = (id) => this.props.events.filter(x=> x.id === id)[0];
+
+    formatDate = (x) => x.toISOString().split('T')[0];
+
+    findIndex = (array, id) => {
+        for (let index = 0; index < array.length; index++) {
+            if(array[index].id === id) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    getEventDetailsId = (id, step) => {
+        if(!this.props.events || !this.props.events.length) {
+            return 0;
+        }
+
+        let index = this.findIndex(this.props.events, id);
+
+        if(index < 0)  {
+            return -1;
+        }
+        else {
+            index += step;
+        }            
+
+        if(index >= this.props.events.length ) {
+            index = 0;
+        }
+        else if (index < 0) {
+            index = this.props.events.length - 1;
+        }        
+        return this.props.events[index].id;
+    }
+
     render() {
 
-        const eventDetails = this.props.events.filter(x=> x.id = this.props.match.params.id)[0];
+        const eventDetails = this.getEventDetailsById(this.props.match.params.id);
 
         let details = null;
 
         if(eventDetails) {
+
+            const nextId = this.getEventDetailsId(this.props.match.params.id, 1);
+            const prevId = this.getEventDetailsId(this.props.match.params.id, -1);
+            const dateParam = this.formatDate(this.props.date);
+
             details =  <React.Fragment>
 
                 <div className={classes.EventDetailsHeader}>
-                    <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
+                    <Link to={`/event/${dateParam}/${nextId}`} >
+                        <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
+                    </Link>
                     <div>
                         <h3>{eventDetails.name}</h3>
                     </div>
-                    <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>
+                    <Link to={`/event/${dateParam}/${prevId}`} >
+                        <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>
+                    </Link>
+                    
                 </div>                
                 <p>{eventDetails.full}</p>
             </React.Fragment>
