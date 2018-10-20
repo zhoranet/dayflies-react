@@ -1,4 +1,4 @@
-Calendar sample app on Reactjs.
+Calendar sample app on Reactjs. Demo: https://dayflies-react.firebaseapp.com/
 
 to run:
 
