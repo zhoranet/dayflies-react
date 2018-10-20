@@ -70,7 +70,7 @@ class EventDetails extends Component {
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
                     </Link>
                     
-                    <h3>{eventDetails.name}</h3>
+                    <h2>{eventDetails.name}</h2>
                     
                     <Link to={`/event/${dateParam}/${prevId}`} replace>
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>

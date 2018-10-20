@@ -41,7 +41,7 @@ class EventList extends Component {
             <div className={classes.EventList}>
                 <div className={classes.EventListHeader}>
                     <Button btnType="Calendar" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="chevron-left" /></Button>
-                    <h1>{this.props.date.toDateString()}</h1>                    
+                    <h2>{this.props.date.toDateString()}</h2>                    
                     <Button btnType="Calendar" clicked={() => this.props.onNextDay(this.props.date)}><FontAwesomeIcon icon="chevron-right" /></Button>
                 </div>
                 {events}
