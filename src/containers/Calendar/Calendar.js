@@ -3,7 +3,7 @@ import classes from './Calendar.css';
 import Month from '../../components/Calendar/Month/Month';
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions";
-
+import { withRouter } from 'react-router-dom';
 
 class Calendar extends Component {
 
@@ -64,7 +64,8 @@ class Calendar extends Component {
         this.props.onSelectDay(this.props.date.getFullYear(), this.props.date.getMonth(), day);
         if(this.props.closeCalendar) {
             this.props.closeCalendar();
-        }            
+        } 
+        this.props.history.push(`/${this.props.date.getFullYear()}-${this.props.date.getMonth()}-${day}`);           
     };
 
     render() {
@@ -110,4 +111,4 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Calendar));

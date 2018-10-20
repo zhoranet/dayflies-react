@@ -66,13 +66,13 @@ class EventDetails extends Component {
             details =  <React.Fragment>
 
                 <div className={classes.EventDetailsHeader}>
-                    <Link to={`/event/${dateParam}/${nextId}`} >
+                    <Link to={`/event/${dateParam}/${nextId}`} replace  >
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
                     </Link>
-                    <div>
-                        <h3>{eventDetails.name}</h3>
-                    </div>
-                    <Link to={`/event/${dateParam}/${prevId}`} >
+                    
+                    <h3>{eventDetails.name}</h3>
+                    
+                    <Link to={`/event/${dateParam}/${prevId}`} replace>
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>
                     </Link>
                     

@@ -14,6 +14,7 @@ class App extends Component {
       <Layout>
         <Switch>
           <Route path="/" exact component={EventList} />
+          <Route path="/:date" exact component={EventList} />
           <Route path="/event/:date/:id" component={EventDetails} />          
         </Switch>       
       </Layout>

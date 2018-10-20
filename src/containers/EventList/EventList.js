@@ -8,8 +8,18 @@ import * as actions from "../../store/actions";
 
 class EventList extends Component {
 
-    componentDidMount () {
-        var today = new Date();
+    componentDidMount () {        
+
+        if(!this.props.events || !this.props.events.length) {
+            this.selectDay();
+        }        
+    }
+
+    selectDay = () => {
+        var today = (this.props.match && this.props.match.params.date) 
+            ? new Date(this.props.match.params.date)
+            : new Date(); 
+                    
         this.props.onSelectDay(today.getFullYear(), today.getMonth(), today.getDate());
     }
 
@@ -17,16 +27,21 @@ class EventList extends Component {
     
     render() {
         const events = this.props.events
-            .map((x, i) => <div key={'e' + i} ><h4>{x.name}</h4><p>{x.short} <Link to={`/event/${this.formatDate(this.props.date)}/${x.id}`} >more...</Link> </p></div>);
+            .map((x, i) => 
+                <div key={'e' + i} >
+                    <h4 className={classes.EventListItemTitle}>{x.name}</h4>
+                    <p>
+                        {x.short} <Link className={classes.More} 
+                            to={`/event/${this.formatDate(this.props.date)}/${x.id}`} >more...</Link> 
+                    </p>
+                </div>);
 
         return (
 
             <div className={classes.EventList}>
                 <div className={classes.EventListHeader}>
                     <Button btnType="Calendar" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="chevron-left" /></Button>
-                    <div>
-                        <h1>{this.props.date.toDateString()}</h1>
-                    </div>
+                    <h1>{this.props.date.toDateString()}</h1>                    
                     <Button btnType="Calendar" clicked={() => this.props.onNextDay(this.props.date)}><FontAwesomeIcon icon="chevron-right" /></Button>
                 </div>
                 {events}
