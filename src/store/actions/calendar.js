@@ -48,7 +48,7 @@ const fetchAllEvents = () => {
 
 const filterByDate = (events, date) => {
     let index = date.getDate() - 1;
-    console.log('index:' + index);
+    
     if(index > 15) index = index - 15;    
     const randomSequence = '245913152879152614361725113313795819';
     let pair = randomSequence.substring(index * 2, (index * 2) + 2);

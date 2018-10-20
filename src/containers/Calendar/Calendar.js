@@ -31,7 +31,7 @@ class Calendar extends Component {
 
     getNormalizedWeekArray(startDay, endDay) {
         const week = [];
-        console.log('start: ', startDay, ' end: ', endDay);
+        
         for (let i = 0; i < 7; i++) {
 
             /* 

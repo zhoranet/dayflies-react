@@ -51,6 +51,12 @@ class EventDetails extends Component {
         return this.props.events[index].id;
     }
 
+    createMarkup =(text) => { 
+        var paragraps = text.split('\r\n');
+        paragraps.map(p=> `<p>${p}</p>`)
+        return {__html: text.replace(/\r\n/g, "<br />")}; 
+    };
+
     render() {
 
         const eventDetails = this.getEventDetailsById(this.props.match.params.id);
@@ -63,21 +69,29 @@ class EventDetails extends Component {
             const prevId = this.getEventDetailsId(this.props.match.params.id, -1);
             const dateParam = this.formatDate(this.props.date);
 
+            const paragraphList = eventDetails.full.split('\r\n').map((x, i)=><p key={i}>{x}</p>);
+
             details =  <React.Fragment>
+
+                <div className={classes.EventListHeader}>
+                    <Link to={`/${dateParam}`} >
+                        <h2>{this.props.date.toDateString()}</h2>
+                    </Link>
+                </div>
 
                 <div className={classes.EventDetailsHeader}>
                     <Link to={`/event/${dateParam}/${nextId}`} replace  >
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
                     </Link>
                     
-                    <h2>{eventDetails.name}</h2>
+                    <h3>{eventDetails.name}</h3>
                     
                     <Link to={`/event/${dateParam}/${prevId}`} replace>
                         <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>
                     </Link>
                     
                 </div>                
-                <p>{eventDetails.full}</p>
+                {paragraphList}
             </React.Fragment>
                         
         }
