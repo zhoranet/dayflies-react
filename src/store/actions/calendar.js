@@ -34,7 +34,8 @@ const incrementMonth = (date, step) => {
 };
 
 const fetchAllEvents = () => {
-  return axios.get("/events/en.json").then(res => {
+  return axios.get("sample-en.json").then(res => {
+  //return axios.get("/events/en.json").then(res => {
     const fetchedEvents = [];
     for (let key in res.data) {    
       fetchedEvents.push({
