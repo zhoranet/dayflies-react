@@ -10,6 +10,8 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;    
+    color: var(--ascentDarkColor);
+    font-weight: bold;
 }
 
 .WeekHeader {
@@ -22,6 +24,7 @@
 .WeekHeader > div {
     flex: 1 1 0;
     color: var(--shadeLightColor);
+    font-weight: bold;
     padding: 1px;
     text-align: center;
     

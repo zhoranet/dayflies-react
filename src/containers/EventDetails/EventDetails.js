@@ -75,7 +75,7 @@ class EventDetails extends Component {
 
                 <div className={classes.EventListHeader}>
                     <Link to={`/${dateParam}`} >
-                        <h2>{this.props.date.toDateString()}</h2>
+                        <Button btnType="Calendar"><FontAwesomeIcon icon="angle-double-left" />{' ' + this.props.date.toDateString()}</Button>
                     </Link>
                 </div>
 

@@ -4,7 +4,8 @@
     height:60px;    
     align-items: center;
     flex: 0 0 auto;
-    color: var(--shadeDarkColor)
+    color: var(--backgroundColor);
+    background-color: var(--shadeLightColor);
     
 }
 

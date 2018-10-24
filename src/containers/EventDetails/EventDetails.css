@@ -12,12 +12,8 @@
 
 .EventListHeader  {
     display: flex;   
-    justify-content: center;
     align-items: center;
     padding: 10px 20px; 
     
 }
 
-h2 {
-    color: var(--ascentDarkColor);
-}
