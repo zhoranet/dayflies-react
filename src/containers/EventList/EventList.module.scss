@@ -1,7 +1,7 @@
 @import '../../styles/globals';
 
 .EventList {
-    padding: 8px 32px;
+    padding: 8px $column-gutter;
 }
 
 .EventListHeader {

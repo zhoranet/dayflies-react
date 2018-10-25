@@ -8,11 +8,9 @@
     flex: 0 0 auto;
     color: $kidnapper;
     background-color: $viking;
-    
-}
-
-.Title h1 {
-    padding:3px 15px;
+    h1 {
+        padding:3px 15px;
+    }    
 }
 
 @media (min-width: 768px) {

@@ -1,3 +1,7 @@
-@import './colors';
-@import './typography';
-@import './grid';
+// based on https://github.com/lchamb/grixins
+
+@import 'normalize';
+@import 'colors';
+@import 'typography';
+@import 'mixins';
+@import 'grid';

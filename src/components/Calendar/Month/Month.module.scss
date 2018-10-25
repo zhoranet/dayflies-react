@@ -2,7 +2,7 @@
 
 .Month {
     max-width: 320px;
-    margin: 10px auto;    
+    margin: 10px auto;
     padding-top: 10px;
     z-index: 99;
 }
@@ -11,23 +11,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 20px;    
+    padding-left: 20px;
     color: $amaranth;
     font-weight: bold;
 }
 
 .WeekHeader {
-    display: flex;  
+    display: flex;
     background-color: $kidnapper;
     align-items: center;
     height: 2em;
-}
 
-.WeekHeader > div {
-    flex: 1 1 0;
-    color: $viking;
-    font-weight: bold;
-    padding: 1px;
-    text-align: center;
-    
+    div {
+        flex: 1 1 0;
+        color: $viking;
+        font-weight: bold;
+        padding: 1px;
+        text-align: center;
+    }
 }

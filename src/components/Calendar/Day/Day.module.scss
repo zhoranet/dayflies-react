@@ -11,17 +11,16 @@
     background-color: $kidnapper;
     cursor: pointer;
 
-}
+    &:hover {
+        font-weight: bolder;
+        line-height: 4em;
+        color: $amaranth;
 
-.Day:hover {
-    font-weight: bolder;
-    line-height: 4em;
-    color: $amaranth;
+    }
 
 }
 
 .selected {
-
     font-weight: bolder;
     line-height: 4em;
     background-color: $yellow-sea;
