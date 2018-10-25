@@ -1,28 +1,30 @@
+@import '../../../styles/globals';
+
 .Day {
     flex: 1 1 0;
-    color: var(--shadeLightColor);
+    color: $viking;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--backgroundDeafult);
-    
+    background-color: $kidnapper;
     cursor: pointer;
+
 }
 
 .Day:hover {
     font-weight: bolder;
     line-height: 4em;
-    color: var(--ascentDarkColor); 
-    
+    color: $amaranth;
+
 }
 
 .selected {
-   
+
     font-weight: bolder;
     line-height: 4em;
-    background-color: var(--ascentLightColor);
-    color: var(--backgroundDefault);
+    background-color: $yellow-sea;
+    color: $white;
     border-radius: 50%;
 }

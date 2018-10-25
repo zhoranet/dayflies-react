@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './EventDetails.css';
+import classes from './EventDetails.module.scss';
 import { connect } from 'react-redux';
 import Button from '../../components/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

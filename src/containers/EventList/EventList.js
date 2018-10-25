@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './EventList.css';
+import classes from './EventList.module.scss';
 import { connect } from 'react-redux';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';

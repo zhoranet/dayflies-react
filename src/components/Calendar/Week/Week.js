@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Week.css';
+import classes from './Week.module.scss';
 import Day from '../Day/Day';
 
 const week = (props) => {

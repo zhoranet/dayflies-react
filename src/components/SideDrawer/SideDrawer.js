@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './SideDrawer.css';
+import classes from './SideDrawer.module.scss';
 import Calendar from '../../containers/Calendar/Calendar';
 import Backdrop from '../Backdrop/Backdrop';
 

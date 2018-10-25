@@ -1,14 +1,15 @@
 Calendar sample app on Reactjs. Demo: https://dayflies-react.firebaseapp.com/
 
-to run:
+usage:
 
-### 1. `npm install`
+1. `npm install`
 
-### 2. create firebase realtime database and import json from \src\data\fb-events-en.json
+2. create firebase realtime database and import json from \src\data\fb-events-en.json
 
-### 3 .create secrets.js in the root folder:
+3. create secrets.js in the root folder:
 `
 export const API_URL = 'https://API_URL.firebaseio.com/'; 
+
 `
-### 4. `npm start`
+4. `npm start`
 

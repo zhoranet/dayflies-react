@@ -1,3 +1,5 @@
+@import '../../../styles/globals';
+
 .Month {
     max-width: 320px;
     margin: 10px auto;    
@@ -10,20 +12,20 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;    
-    color: var(--ascentDarkColor);
+    color: $amaranth;
     font-weight: bold;
 }
 
 .WeekHeader {
     display: flex;  
-    background-color: var(--backgroundColor);
+    background-color: $kidnapper;
     align-items: center;
     height: 2em;
 }
 
 .WeekHeader > div {
     flex: 1 1 0;
-    color: var(--shadeLightColor);
+    color: $viking;
     font-weight: bold;
     padding: 1px;
     text-align: center;

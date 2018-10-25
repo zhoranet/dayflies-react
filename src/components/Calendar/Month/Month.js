@@ -1,6 +1,6 @@
 import React from 'react';
 import Week from '../Week/Week';
-import classes from './Month.css';
+import classes from './Month.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../Button/Button';
 

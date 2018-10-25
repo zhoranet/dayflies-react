@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Title.css'
+import classes from './Title.module.scss'
 
 
 const title = (props) => {

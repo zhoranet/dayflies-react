@@ -1,3 +1,5 @@
+@import '../../styles/globals';
+
 .Button {
     background-color: transparent;
     border: none;
@@ -29,6 +31,6 @@
 }
 
 .Calendar {
-    color: var(--shadeDarkColor);
+    color: $pelorous;
 }
 

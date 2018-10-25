@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Toolbar.css'
+import classes from './Toolbar.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button/Button';
 

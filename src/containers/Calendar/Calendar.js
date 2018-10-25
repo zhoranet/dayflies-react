@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Calendar.css';
+import classes from './Calendar.module.scss';
 import Month from '../../components/Calendar/Month/Month';
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions";

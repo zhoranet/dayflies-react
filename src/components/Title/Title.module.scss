@@ -1,11 +1,13 @@
+@import '../../styles/globals';
+
 .Title {        
     width:100%;
     display: none;
     height:60px;    
     align-items: center;
     flex: 0 0 auto;
-    color: var(--backgroundColor);
-    background-color: var(--shadeLightColor);
+    color: $kidnapper;
+    background-color: $viking;
     
 }
 
