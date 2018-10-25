@@ -27,16 +27,16 @@ class EventList extends Component {
     
     render() {
         const events = this.props.events
-            .map((x, i) => 
+            .map((x, i) =>                 
                 <div key={'e' + i} >
                     <Link className={classes.More} 
                             to={`/event/${this.formatDate(this.props.date)}/${x.id}`} >
                         <h4 className={classes.EventListItemTitle}>{x.name}</h4>
-                    </Link>                     
+                    
                     <p>
-                        {x.short} <Link className={classes.More} 
-                            to={`/event/${this.formatDate(this.props.date)}/${x.id}`} >more...</Link> 
+                        {x.short} ...
                     </p>
+                    </Link>                     
                 </div>);
 
         return (

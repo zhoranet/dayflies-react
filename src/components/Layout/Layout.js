@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-
+import res from '../../data/resources.json';
 import classes from './Layout.module.scss'
 import Title from '../Title/Title'
 import Toolbar from '../Toolbar/Toolbar'
@@ -30,13 +30,14 @@ class Layout extends Component {
             <React.Fragment>
                 <div className={classes.Layout}>
                     <div className={classes.MainContainer}>
-                        <Title/>                
+                        <Title title={res.app.title[0]}/>                
                         <div className={classes.SideDrawerContainer}>                    
                             <SideDrawer 
                                 open={this.state.showSiteDrawer} 
                                 onClose={this.sideDrawerClosedHandler}/>
                             <div className={classes.ToolbarContainer}>
-                                <Toolbar toggleDrawer={this.sideDrawerToggleHandler} title='Unknown'/>                        
+                                <Toolbar toggleDrawer={this.sideDrawerToggleHandler} 
+                                    title={res.app.title[0]}/>                        
                                 <div className={classes.ContentContainer}>                        
                                     {this.props.children}
                                 </div>

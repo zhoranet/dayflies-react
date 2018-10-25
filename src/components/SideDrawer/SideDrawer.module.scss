@@ -1,13 +1,13 @@
-@import '../../styles/globals';
+@import '../../styles/globals.scss';
 
 .SideDrawer {
     position: absolute;
     top: 0;
     bottom: 0;
     transition: all 0.2s ease-in-out;    
-    width: 300px;
+    width: auto;
     background-color:$kidnapper;
-    padding: 8px 8px;
+    padding: 8px $column-gutter;
     z-index: 1;
     opacity: 1;
     flex: 0 0 auto;

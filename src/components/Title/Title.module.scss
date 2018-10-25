@@ -1,9 +1,9 @@
-@import '../../styles/globals';
+@import '../../styles/globals.scss';
 
 .Title {        
     width:100%;
     display: none;
-    height:60px;    
+    
     align-items: center;
     flex: 0 0 auto;
     color: $kidnapper;

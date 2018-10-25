@@ -1,4 +1,4 @@
-@import '../../styles/globals';
+@import '../../styles/globals.scss';
 
 .EventList {
     padding: 8px $column-gutter;
@@ -12,8 +12,9 @@
     color: $amaranth;
 }
 
-.More {
-    color: $viking;
+.More {    
+    color: inherit;
+    text-decoration: none;
 }
 
 .EventListItemTitle {
