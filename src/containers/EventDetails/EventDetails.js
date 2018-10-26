@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as actions from "../../store/actions";
 import { Link } from 'react-router-dom';
+import Swipeable from 'react-swipeable';
 
 class EventDetails extends Component {
 
@@ -57,6 +58,14 @@ class EventDetails extends Component {
         return {__html: text.replace(/\r\n/g, "<br />")}; 
     };
 
+    getEventUrl(step) {
+        const id = this.getEventDetailsId(this.props.match.params.id, step);
+        const dateParam = this.formatDate(this.props.date);
+        return (`/event/${dateParam}/${id}`);
+    }
+
+    swipe = (step) => this.props.history.push(this.getEventUrl(step));    
+
     render() {
 
         const eventDetails = this.getEventDetailsById(this.props.match.params.id);
@@ -65,11 +74,12 @@ class EventDetails extends Component {
 
         if(eventDetails) {
 
-            const nextId = this.getEventDetailsId(this.props.match.params.id, 1);
-            const prevId = this.getEventDetailsId(this.props.match.params.id, -1);
             const dateParam = this.formatDate(this.props.date);
-
+            const leftUrl = this.getEventUrl(-1);
+            const rightUrl = this.getEventUrl(1);
             const paragraphList = eventDetails.full.split('\r\n').map((x, i)=><p key={i}>{x}</p>);
+
+
 
             details =  <React.Fragment>
 
@@ -78,20 +88,23 @@ class EventDetails extends Component {
                         <Button btnType="NavBorderText"><FontAwesomeIcon icon="angle-double-left" />{' ' + this.props.date.toDateString()}</Button>
                     </Link>
                 </div>
-
-                <div className={classes.EventDetailsHeader}>
-                    <Link to={`/event/${dateParam}/${nextId}`} replace  >
-                        <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-left" /></Button>
-                    </Link>
-                    
-                    <h4 className={classes.EvnetDeatilsHeaderName}>{eventDetails.name}</h4>
-                    
-                    <Link to={`/event/${dateParam}/${prevId}`} replace>
-                        <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-right" /></Button>
-                    </Link>
-                    
-                </div>                
-                {paragraphList}
+                <Swipeable flickThreshold={0.8} delta={50}
+                    onSwipedLeft={() => this.swipe(-1)} onSwipedRight={() => this.swipe(1)}>
+                    <div className={classes.EventDetailsHeader}>
+                        <Link to={leftUrl} replace  >
+                            <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-left" /></Button>
+                        </Link>
+                        
+                        <h4 className={classes.EvnetDeatilsHeaderName}>{eventDetails.name}</h4>
+                        
+                        <Link to={rightUrl} replace>
+                            <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-right" /></Button>
+                        </Link>
+                        
+                    </div>                
+                    {paragraphList}
+                </Swipeable>
+                
             </React.Fragment>
                         
         }

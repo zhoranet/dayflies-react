@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as actions from "../../store/actions";
+import Swipeable from 'react-swipeable';
 
 class EventList extends Component {
 
@@ -42,14 +43,17 @@ class EventList extends Component {
         return (
 
             <div className={classes.EventList}>
-                <div className={classes.EventListHeader}>
-                    <Button btnType="NavCircle" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="angle-double-left" /></Button>
-                    <div className={classes.EvnetListHeaderName}>
-                        <h3>{this.props.date.toDateString()}</h3>
-                    </div>                                       
-                    <Button btnType="NavCircle" clicked={() => this.props.onNextDay(this.props.date)}><FontAwesomeIcon icon="angle-double-right" /></Button>
-                </div>
-                {events}
+                <Swipeable flickThreshold={0.8} delta={50}
+                    onSwipedLeft={() => this.props.onPrevDay(this.props.date)} onSwipedRight={() => this.props.onNextDay(this.props.date)}>
+                    <div className={classes.EventListHeader}>
+                        <Button btnType="NavCircle" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="angle-double-left" /></Button>
+                        <div className={classes.EvnetListHeaderName}>
+                            <h3>{this.props.date.toDateString()}</h3>
+                        </div>                                       
+                        <Button btnType="NavCircle" clicked={() => this.props.onNextDay(this.props.date)}><FontAwesomeIcon icon="angle-double-right" /></Button>
+                    </div>
+                    {events}
+                </Swipeable>
             </div>
         );
     }
