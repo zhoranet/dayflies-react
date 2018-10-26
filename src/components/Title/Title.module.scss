@@ -3,7 +3,7 @@
 .Title {        
     width:100%;
     display: none;
-    
+    padding-left: $column-gutter;
     align-items: center;
     flex: 0 0 auto;
     color: $kidnapper;

@@ -5,8 +5,8 @@ import EventDetails from './containers/EventDetails/EventDetails';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Route, Switch } from 'react-router-dom';
 
-import { faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
-library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft);
+import { faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight);
 
 class App extends Component {
   render() {

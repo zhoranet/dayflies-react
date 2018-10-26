@@ -75,19 +75,19 @@ class EventDetails extends Component {
 
                 <div className={classes.EventListHeader}>
                     <Link to={`/${dateParam}`} >
-                        <Button btnType="Calendar"><FontAwesomeIcon icon="angle-double-left" />{' ' + this.props.date.toDateString()}</Button>
+                        <Button btnType="NavBorderText"><FontAwesomeIcon icon="angle-double-left" />{' ' + this.props.date.toDateString()}</Button>
                     </Link>
                 </div>
 
                 <div className={classes.EventDetailsHeader}>
                     <Link to={`/event/${dateParam}/${nextId}`} replace  >
-                        <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-left" /></Button>
+                        <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-left" /></Button>
                     </Link>
                     
-                    <h3>{eventDetails.name}</h3>
+                    <h3 className={classes.EvnetDeatilsHeaderName}>{eventDetails.name}</h3>
                     
                     <Link to={`/event/${dateParam}/${prevId}`} replace>
-                        <Button btnType="Calendar"><FontAwesomeIcon icon="chevron-right" /></Button>
+                        <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-right" /></Button>
                     </Link>
                     
                 </div>                

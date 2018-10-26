@@ -1,15 +1,40 @@
 @import '../../styles/globals.scss';
 
+@mixin button-bg($bg) {
+    color: $white;
+    text-decoration: none;
+    padding: 2px 2px;
+    margin: 2px 0;    
+    font-size: 1.3em;
+    border: solid 1px transparent;
+    background: $bg;
+
+    &::-moz-focus-inner {
+        border: none;
+    }
+
+    &:focus {
+        outline:0;
+    }
+
+    &:hover {
+        background: darken(rgba( $bg, .1 ), 8%);
+        transition: all 0.3s ease;
+        
+    }
+
+    &:active {
+        background: darken(rgba( $bg, .1 ), 25%);
+    }
+
+    &:disabled {
+        background: darken(rgba( $bg, .7 ), 30%);
+        cursor: not-allowed;
+    }
+}
+
 .Button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
+    @include button-bg(transparent);    
 }
 
 .Button:first-of-type {
@@ -17,20 +42,41 @@
     padding-left: 0;
 }
 
-.Button:disabled {
-    color: #ccc;
-    cursor: not-allowed;
-}
-
 .Success {
-    color: #5C9210;
+    @include button-bg(#5C9210);      
 }
 
 .Danger {
-    color: #944317;
+    @include button-bg(#944317);
 }
 
-.Calendar {
-    color: $pelorous;
+.Calendar {        
+    @include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    border: solid 2px transparent;
+    color: $yellow-sea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px; 
 }
 
+.NavCircle {
+    @include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    border: solid 2px $yellow-sea;
+    color: $yellow-sea;
+    font-weight: bolder;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;    
+}
+
+.NavBorderText {
+    @include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    border: solid 2px $yellow-sea;
+    color: $yellow-sea;
+    border-radius: 20px;
+    padding: 0 20px;
+    height: 40px;    
+}
