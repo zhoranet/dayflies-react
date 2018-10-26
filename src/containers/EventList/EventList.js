@@ -44,7 +44,7 @@ class EventList extends Component {
 
             <div className={classes.EventList}>
                 <Swipeable flickThreshold={0.8} delta={50}
-                    onSwipedLeft={() => this.props.onPrevDay(this.props.date)} onSwipedRight={() => this.props.onNextDay(this.props.date)}>
+                    onSwipedLeft={() => this.props.onNextDay(this.props.date)} onSwipedRight={() => this.props.onPrevDay(this.props.date)}>
                     <div className={classes.EventListHeader}>
                         <Button btnType="NavCircle" clicked={() => this.props.onPrevDay(this.props.date)} ><FontAwesomeIcon icon="angle-double-left" /></Button>
                         <div className={classes.EvnetListHeaderName}>

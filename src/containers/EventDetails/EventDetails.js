@@ -89,7 +89,7 @@ class EventDetails extends Component {
                     </Link>
                 </div>
                 <Swipeable flickThreshold={0.8} delta={50}
-                    onSwipedLeft={() => this.swipe(-1)} onSwipedRight={() => this.swipe(1)}>
+                    onSwipedLeft={() => this.swipe(1)} onSwipedRight={() => this.swipe(-1)}>
                     <div className={classes.EventDetailsHeader}>
                         <Link to={leftUrl} replace  >
                             <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-left" /></Button>
