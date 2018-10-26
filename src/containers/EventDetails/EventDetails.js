@@ -64,7 +64,7 @@ class EventDetails extends Component {
         return (`/event/${dateParam}/${id}`);
     }
 
-    swipe = (step) => this.props.history.push(this.getEventUrl(step));    
+    swipe = (step) => this.props.history.replace(this.getEventUrl(step));    
 
     render() {
 
