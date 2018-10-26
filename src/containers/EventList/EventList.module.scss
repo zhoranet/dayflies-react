@@ -1,15 +1,18 @@
 @import '../../styles/globals.scss';
 
 .EventList {
-    padding: 8px $column-gutter;
+    padding: 0 $column-gutter;
 }
 
 .EventListHeader {
     display: flex;   
     justify-content: space-between;
-    align-items: center;
-    padding: 2px 20px;
+    align-items: center;    
     color: $amaranth;
+}
+
+.EvnetListHeaderName {
+    padding: 0 1em;
 }
 
 .More {    

@@ -84,7 +84,7 @@ class EventDetails extends Component {
                         <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-left" /></Button>
                     </Link>
                     
-                    <h3 className={classes.EvnetDeatilsHeaderName}>{eventDetails.name}</h3>
+                    <h4 className={classes.EvnetDeatilsHeaderName}>{eventDetails.name}</h4>
                     
                     <Link to={`/event/${dateParam}/${prevId}`} replace>
                         <Button btnType="NavCircle"><FontAwesomeIcon icon="chevron-right" /></Button>

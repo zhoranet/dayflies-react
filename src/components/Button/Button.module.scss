@@ -7,7 +7,7 @@
     margin: 2px 0;    
     font-size: 1.3em;
     border: solid 1px transparent;
-    background: $bg;
+    background: $bg;    
 
     &::-moz-focus-inner {
         border: none;
@@ -25,6 +25,7 @@
 
     &:active {
         background: darken(rgba( $bg, .1 ), 25%);
+        transform: translateY(1px);
     }
 
     &:disabled {
@@ -79,4 +80,11 @@
     border-radius: 20px;
     padding: 0 20px;
     height: 40px;    
+}
+
+.ToggleSideDrawer {
+    @include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    color: $kidnapper;
+    padding: 0 20px;    
 }

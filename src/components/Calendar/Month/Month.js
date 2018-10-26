@@ -24,9 +24,9 @@ const month = (props) => {
     return (
         <div className={classes.Month}>
             <div className={classes.MonthHeader}>                
-                <Button btnType="Calendar" clicked={props.onPrevMonth}><FontAwesomeIcon icon="chevron-left" /></Button>
+                <Button btnType="Calendar" clicked={props.onPrevMonth}><FontAwesomeIcon icon="angle-double-left" /></Button>
                 <div>{monthName} {props.date.getFullYear()}</div>
-                <Button btnType="Calendar" clicked={props.onNextMonth}><FontAwesomeIcon icon="chevron-right" /></Button>
+                <Button btnType="Calendar" clicked={props.onNextMonth}><FontAwesomeIcon icon="angle-double-right" /></Button>
             </div>
             <div className={classes.WeekHeader}>
                 <div >Su</div>
