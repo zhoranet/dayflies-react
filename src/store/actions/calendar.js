@@ -35,9 +35,9 @@ const incrementMonth = (date, step) => {
 
 const fetchAllEvents = () => {
   return axios.get("/sample-en.json").then(res => {
-  //return axios.get("/events/en.json").then(res => {
+    //return axios.get("/events/en.json").then(res => {
     const fetchedEvents = [];
-    for (let key in res.data) {    
+    for (let key in res.data) {
       fetchedEvents.push({
         ...res.data[key],
         id: key
@@ -48,14 +48,17 @@ const fetchAllEvents = () => {
 };
 
 const filterByDate = (events, date) => {
-    let index = date.getDate() - 1;
-    
-    if(index > 15) index = index - 15;    
-    const randomSequence = '245913152879152614361725113313795819';
-    let pair = randomSequence.substring(index * 2, (index * 2) + 2);
-    return events.filter(x => parseInt(x.id, 10) >= parseInt(pair.charAt(0), 10) 
-        && parseInt(x.id, 10) <= parseInt(pair.charAt(1), 10));
-}
+  let index = date.getDate() - 1;
+
+  if (index > 15) index = index - 15;
+  const randomSequence = "245913152879152614361725113313795819";
+  let pair = randomSequence.substring(index * 2, index * 2 + 2);
+  return events.filter(
+    x =>
+      parseInt(x.id, 10) >= parseInt(pair.charAt(0), 10) &&
+      parseInt(x.id, 10) <= parseInt(pair.charAt(1), 10)
+  );
+};
 
 const fetchEvents = date => {
   return dispatch => {
@@ -75,6 +78,13 @@ const fetchEvents = date => {
 };
 
 const selectDate = date => dispatch => dispatch(fetchEvents(date));
+
+export const selectLanguage = language => {
+  return {
+    type: actionTypes.SELECT_LANGUAGE,
+    language: language
+  };
+};
 
 export const selectDay = (year, month, day) => dispatch =>
   dispatch(selectDate(new Date(year, month, day)));

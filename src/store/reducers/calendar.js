@@ -27,11 +27,16 @@ const fetchEventsSuccess = (state, action) => {
     } );
 }
 
+const selectLanguage = (state, action) => {
+    return updateObject( state, {selectedLanguage: action.language} );
+};
+
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.SELECT_DATE: return selectDate( state, action );        
         case actionTypes.FETCH_EVENTS_START: return fetchEventsStart( state, action );        
         case actionTypes.FETCH_EVENTS_SUCCESS: return fetchEventsSuccess( state, action );        
+        case actionTypes.SELECT_LANGUAGE: return selectLanguage( state, action );        
         default: return state;
     }
 };

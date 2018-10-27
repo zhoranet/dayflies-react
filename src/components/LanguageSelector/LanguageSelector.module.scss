@@ -1,0 +1,23 @@
+@import '../../styles/globals.scss';
+
+.Input {
+    width: 100%;    
+    box-sizing: border-box; 
+}
+
+.Label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: $amaranth;
+}
+.Select {
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
