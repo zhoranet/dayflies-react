@@ -21,21 +21,21 @@ const fetchEventsStart = () => {
   };
 };
 
-const incrementDay = (date, step) => {
+const incrementDay = (date, step, language) => {
   var newDate = new Date(date);
   newDate.setDate(newDate.getDate() + step);
-  return selectDate(newDate);
+  return selectDate(newDate, language);
 };
 
-const incrementMonth = (date, step) => {
+const incrementMonth = (date, step, language) => {
   var newDate = new Date(date);
   newDate.setMonth(newDate.getMonth() + step);
-  return selectDate(newDate);
+  return selectDate(newDate, language);
 };
 
-const fetchAllEvents = () => {
-  return axios.get("/sample-en.json").then(res => {
-    //return axios.get("/events/en.json").then(res => {
+const fetchAllEvents = (language) => {
+  //return axios.get("/sample-en.json").then(res => {
+  return axios.get(`/events/${language}.json`).then(res => {
     const fetchedEvents = [];
     for (let key in res.data) {
       fetchedEvents.push({
@@ -60,15 +60,16 @@ const filterByDate = (events, date) => {
   );
 };
 
-const fetchEvents = date => {
+const fetchEvents = (date,language) => {
   return dispatch => {
     dispatch(fetchEventsStart());
     dispatch({
       type: actionTypes.SELECT_DATE,
-      selectedDate: date
+      selectedDate: date,
+      selectedLanguage: language
     });
 
-    fetchAllEvents()
+    fetchAllEvents(language)
       .then(fetchedEvents => filterByDate(fetchedEvents, date))
       .then(filteredEvents => dispatch(fetchEventsSuccess(filteredEvents)))
       .catch(err => {
@@ -77,7 +78,7 @@ const fetchEvents = date => {
   };
 };
 
-const selectDate = date => dispatch => dispatch(fetchEvents(date));
+const selectDate = (date,language) => dispatch => dispatch(fetchEvents(date, language));
 
 export const selectLanguage = language => {
   return {
@@ -86,9 +87,9 @@ export const selectLanguage = language => {
   };
 };
 
-export const selectDay = (year, month, day) => dispatch =>
-  dispatch(selectDate(new Date(year, month, day)));
-export const prevDay = date => incrementDay(date, -1);
-export const nextDay = date => incrementDay(date, 1);
-export const prevMonth = date => incrementMonth(date, -1);
-export const nextMonth = date => incrementMonth(date, 1);
+export const selectDay = (year, month, day, language) => dispatch =>
+  dispatch(selectDate(new Date(year, month, day), language));
+export const prevDay = (date, language) => incrementDay(date, -1, language);
+export const nextDay = (date, language) => incrementDay(date, 1, language);
+export const prevMonth = (date, language) => incrementMonth(date, -1, language);
+export const nextMonth = (date, language) => incrementMonth(date, 1, language);

@@ -3,7 +3,8 @@ import { updateObject } from '../utility';
 
 const initialState = {
     selectedDate: new Date(),
-    events: []
+    events: [],
+    selectedLanguage: 'en'
 };
 
 const createSelectedDateState = (date) => {
