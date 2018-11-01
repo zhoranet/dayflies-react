@@ -15,27 +15,34 @@ class EventList extends Component {
   }
 
   selectDay = () => {
-    var today =
+    let today =
       this.props.match && this.props.match.params.date
         ? new Date(this.props.match.params.date)
         : new Date();
+
+    let language = this.props.match.params.language || this.props.language || 'en';
 
     this.props.onSelectDay(
       today.getFullYear(),
       today.getMonth(),
       today.getDate(),
-      this.props.language
+      language
     );
   };
 
   formatDate = x => x.toISOString().split("T")[0];
 
   render() {
+
+
+    let date = new Date( this.props.match.params.date || this.props.date || new Date());
+    let language = this.props.match.params.language || this.props.language || 'en';
+
     const events = this.props.events.map((x, i) => (
       <div key={"e" + i}>
         <Link
           className={classes.More}
-          to={`/event/${this.formatDate(this.props.date)}/${x.id}`}
+          to={`/event/${language}/${this.formatDate(date)}/${x.id}`}
         >
           <h4 className={classes.EventListItemTitle}>{x.name}</h4>
 
@@ -49,22 +56,22 @@ class EventList extends Component {
         <Swipeable
           flickThreshold={0.8}
           delta={50}
-          onSwipedLeft={() => this.props.onNextDay(this.props.date, this.props.language)}
-          onSwipedRight={() => this.props.onPrevDay(this.props.date, this.props.language)}
+          onSwipedLeft={() => this.props.onNextDay(date, language)}
+          onSwipedRight={() => this.props.onPrevDay(date, language)}
         >
           <div className={classes.EventListHeader}>
             <Button
               btnType="NavCircle"
-              clicked={() => this.props.onPrevDay(this.props.date, this.props.language)}
+              clicked={() => this.props.onPrevDay(date, language)}
             >
               <FontAwesomeIcon icon="angle-double-left" />
             </Button>
             <div className={classes.EvnetListHeaderName}>
-              <h3>{this.props.date.toDateString()}</h3>
+              <h3>{date.toDateString()}</h3>
             </div>
             <Button
               btnType="NavCircle"
-              clicked={() => this.props.onNextDay(this.props.date, this.props.language)}
+              clicked={() => this.props.onNextDay(date, language)}
             >
               <FontAwesomeIcon icon="angle-double-right" />
             </Button>

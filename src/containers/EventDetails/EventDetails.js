@@ -63,12 +63,18 @@ class EventDetails extends Component {
   getEventUrl(step) {
     const id = this.getEventDetailsId(this.props.match.params.id, step);
     const dateParam = this.formatDate(this.props.date);
-    return `/event/${dateParam}/${id}`;
+    let language = this.props.match.params.language || this.props.language || 'en';
+    return `/event/${language}/${dateParam}/${id}`;
   }
 
   swipe = step => this.props.history.replace(this.getEventUrl(step));
 
   render() {
+
+
+    let date = new Date( this.props.match.params.date || this.props.date || new Date());
+    let language = this.props.match.params.language || this.props.language || 'en';
+
     const eventDetails = this.getEventDetailsById(this.props.match.params.id);
 
     let details = null;
@@ -84,10 +90,10 @@ class EventDetails extends Component {
       details = (
         <React.Fragment>
           <div className={classes.EventListHeader}>
-            <Link to={`/${dateParam}`}>
+            <Link to={`/${language}/${dateParam}`}>
               <Button btnType="NavBorderText">
                 <FontAwesomeIcon icon="angle-double-left" />
-                {" " + this.props.date.toDateString()}
+                {" " + date.toDateString()}
               </Button>
             </Link>
           </div>

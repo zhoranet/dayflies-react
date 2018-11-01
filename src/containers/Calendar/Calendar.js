@@ -66,7 +66,7 @@ class Calendar extends Component {
       this.props.closeCalendar();
     }
     this.props.history.push(
-      `/${this.props.date.getFullYear()}-${this.props.date.getMonth()}-${day}`
+      `/${this.props.language}/${this.props.date.getFullYear()}-${this.props.date.getMonth()}-${day}`
     );
   };
 
