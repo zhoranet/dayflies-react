@@ -10,13 +10,7 @@ import Swipeable from "react-swipeable";
 class EventDetails extends Component {
   componentWillMount() {
     if (!this.props.events || !this.props.events.length) {
-      let date = new Date();
-      this.props.onSelectDay(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        this.props.language
-      );
+		this.props.onSelectDate(new Date(), this.props.language);
     }
   }
 
@@ -140,8 +134,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectDay: (year, month, day, language) =>
-      dispatch(actions.selectDay(year, month, day, language))
+    onSelectDate: (date, language) =>
+      dispatch(actions.selectDate(date, language))
   };
 };
 

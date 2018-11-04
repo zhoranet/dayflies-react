@@ -1,7 +1,5 @@
 export { 
-    selectDay,
-    nextDay,
-    prevDay,
+    selectDate,
     prevMonth,
     nextMonth,
     selectLanguage

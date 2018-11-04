@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
-import classes from './EventList.module.scss';
-import { connect } from 'react-redux';
-import Button from '../../components/Button/Button';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as actions from '../../store/actions';
-import Swipeable from 'react-swipeable';
-import * as dateUtils from '../../shared/dateUtils';
+import React, { Component } from "react";
+import classes from "./EventList.module.scss";
+import { connect } from "react-redux";
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as actions from "../../store/actions";
+import Swipeable from "react-swipeable";
+import * as dateUtils from "../../shared/dateUtils";
+import moment from "moment";
 
 class EventList extends Component {
-	
 	componentDidMount() {
-
 		this.unlisten = this.props.history.listen((location, action) => {
 			this.selectDate(this.getUrlDate(), this.getUrlLanguage());
 		});
 
 		if (!this.props.events || !this.props.events.length) {
 			this.selectDate(this.getUrlDate(), this.getUrlLanguage());
-		}		
+		}
 	}
 
 	componentWillUnmount() {
@@ -26,15 +25,19 @@ class EventList extends Component {
 	}
 
 	getUrlDate() {
-		return this.props.match && this.props.match.params.date ? new Date(this.props.match.params.date) : new Date();
+		if (this.props.match && this.props.match.params.date) {
+			return moment(this.props.match.params.date, "YYYY-MM-DD").toDate();
+		} else {
+			return new Date();
+		}
 	}
 
 	getUrlLanguage() {
-		return this.props.match.params.language || 'en';
+		return this.props.match.params.language || "en";
 	}
 
 	selectDate(date, language) {
-		this.props.onSelectDay(date.getFullYear(), date.getMonth(), date.getDate(), language);
+		this.props.onSelectDate(date, language);
 	}
 
 	incrementDay(date, step) {
@@ -43,25 +46,28 @@ class EventList extends Component {
 		return newDate;
 	}
 
-	getDayUrl(language, date, ) {
+	getDayUrl(language, date) {
 		return `${language}/${dateUtils.formatDate(date)}`;
 	}
 
 	getPrevDayUrl(language, date) {
-		return this.getDayUrl(language, this.incrementDay(date, -1));
+		return "/" + this.getDayUrl(language, this.incrementDay(date, -1));
 	}
 
 	getNextDayUrl(language, date) {
-		return this.getDayUrl(language, this.incrementDay(date, -1));
+		return "/" + this.getDayUrl(language, this.incrementDay(date, 1));
 	}
+
+	swipe = toUrl => this.props.history.replace(toUrl);
 
 	render() {
 		const date = this.getUrlDate();
+		console.log("render", date);
 		const language = this.getUrlLanguage();
-		const dayUrl =  this.getDayUrl(language, date);
+		const dayUrl = this.getDayUrl(language, date);
 
 		const events = this.props.events.map((x, i) => (
-			<div key={'e' + i}>
+			<div key={"e" + i}>
 				<Link className={classes.More} to={`/event/${dayUrl}/${x.id}`}>
 					<h4 className={classes.EventListItemTitle}>{x.name}</h4>
 					<p>{x.short} ...</p>
@@ -74,11 +80,12 @@ class EventList extends Component {
 				<Swipeable
 					flickThreshold={0.8}
 					delta={50}
-					onSwipedLeft={() => this.props.onNextDay(date, language)}
-					onSwipedRight={() => this.props.onPrevDay(date, language)}>
+					onSwipedLeft={() => this.swipe(this.getNextDayUrl(language, date))}
+					onSwipedRight={() => this.swipe(this.getPrevDayUrl(language, date))}
+				>
 					<div className={classes.EventListHeader}>
-						<Link to={"/" + this.getPrevDayUrl(language, date)} >
-							<Button btnType="NavCircle" >
+						<Link to={this.getPrevDayUrl(language, date)}>
+							<Button btnType="NavCircle">
 								<FontAwesomeIcon icon="angle-double-left" />
 							</Button>
 						</Link>
@@ -87,12 +94,11 @@ class EventList extends Component {
 							<h3>{date.toDateString()}</h3>
 						</div>
 
-						<Link to={"/" + this.getNextDayUrl(language, date)} >
-							<Button btnType="NavCircle" >
+						<Link to={this.getNextDayUrl(language, date)}>
+							<Button btnType="NavCircle">
 								<FontAwesomeIcon icon="angle-double-right" />
 							</Button>
 						</Link>
-						
 					</div>
 					{events}
 				</Swipeable>
@@ -103,17 +109,13 @@ class EventList extends Component {
 
 const mapStateToProps = state => {
 	return {
-		date: state.selectedDate,
-		events: state.events,
-		language: state.selectedLanguage,
+		events: state.events
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onSelectDay: (year, month, day, language) => dispatch(actions.selectDay(year, month, day, language)),
-		onNextDay: (date, language) => dispatch(actions.nextDay(date, language)),
-		onPrevDay: (date, language) => dispatch(actions.prevDay(date, language)),
+		onSelectDate: (date, language) => dispatch(actions.selectDate(date, language))
 	};
 };
 

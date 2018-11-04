@@ -56,12 +56,10 @@ class Calendar extends Component {
   }
 
   onDaySelected = day => {
-    this.props.onSelectDay(
-      this.props.date.getFullYear(),
-      this.props.date.getMonth(),
-      day,
-      this.props.language
-    );
+	  this.props.onSelectDate(
+		new Date(this.props.date.getFullYear(), this.props.date.getMonth(), day),
+		  this.props.language
+	  );
     if (this.props.closeCalendar) {
       this.props.closeCalendar();
     }
@@ -105,8 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectDay: (year, month, day, language) =>
-      dispatch(actions.selectDay(year, month, day, language)),
+    onSelectDate: (date, language) =>
+      dispatch(actions.selectDate(date, language)),
     onPrevMonth: (date, language) => dispatch(actions.prevMonth(date, language)),
     onNextMonth: (date, language) => dispatch(actions.nextMonth(date, language))
   };

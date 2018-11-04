@@ -21,12 +21,6 @@ const fetchEventsStart = () => {
   };
 };
 
-const incrementDay = (date, step, language) => {
-  var newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + step);
-  return selectDate(newDate, language);
-};
-
 const incrementMonth = (date, step, language) => {
   var newDate = new Date(date);
   newDate.setMonth(newDate.getMonth() + step);
@@ -78,7 +72,7 @@ const fetchEvents = (date,language) => {
   };
 };
 
-const selectDate = (date,language) => dispatch => dispatch(fetchEvents(date, language));
+export const selectDate = (date,language) => dispatch => dispatch(fetchEvents(date, language));
 
 export const selectLanguage = language => {
   return {
@@ -87,9 +81,5 @@ export const selectLanguage = language => {
   };
 };
 
-export const selectDay = (year, month, day, language) => dispatch =>
-  dispatch(selectDate(new Date(year, month, day), language));
-export const prevDay = (date, language) => incrementDay(date, -1, language);
-export const nextDay = (date, language) => incrementDay(date, 1, language);
 export const prevMonth = (date, language) => incrementMonth(date, -1, language);
 export const nextMonth = (date, language) => incrementMonth(date, 1, language);
