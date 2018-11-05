@@ -12,11 +12,11 @@ import moment from "moment";
 class EventList extends Component {
 	componentDidMount() {
 		this.unlisten = this.props.history.listen((location, action) => {
-			this.selectDate(this.getUrlDate(), this.getUrlLanguage());
+			this.props.onSelectDate(this.getUrlDate(), this.getUrlLanguage());
 		});
 
 		if (!this.props.events || !this.props.events.length) {
-			this.selectDate(this.getUrlDate(), this.getUrlLanguage());
+			this.props.onSelectDate(this.getUrlDate(), this.getUrlLanguage());
 		}
 	}
 
@@ -34,10 +34,6 @@ class EventList extends Component {
 
 	getUrlLanguage() {
 		return this.props.match.params.language || "en";
-	}
-
-	selectDate(date, language) {
-		this.props.onSelectDate(date, language);
 	}
 
 	incrementDay(date, step) {

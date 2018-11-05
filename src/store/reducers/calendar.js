@@ -7,14 +7,15 @@ const initialState = {
     selectedLanguage: 'en'
 };
 
-const createSelectedDateState = (date) => {
+const createSelectedDateState = (date, language) => {
     return {
-        selectedDate: date
+		selectedDate: date,
+		selectedLanguage: language
     };
 }
 
 const selectDate = (state, action) => {
-    return updateObject( state, createSelectedDateState(action.selectedDate) );
+    return updateObject( state, createSelectedDateState(action.selectedDate, action.selectedLanguage) );
 };
 
 const fetchEventsStart = (state, action) => {
