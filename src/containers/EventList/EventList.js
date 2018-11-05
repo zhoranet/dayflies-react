@@ -8,6 +8,7 @@ import * as actions from "../../store/actions";
 import Swipeable from "react-swipeable";
 import * as dateUtils from "../../shared/dateUtils";
 import moment from "moment";
+import withEventLoader from "../../hoc/EventLoader/EventLoader";
 
 class EventList extends Component {
 	componentDidMount() {
@@ -58,7 +59,6 @@ class EventList extends Component {
 
 	render() {
 		const date = this.getUrlDate();
-		console.log("render", date);
 		const language = this.getUrlLanguage();
 		const dayUrl = this.getDayUrl(language, date);
 
@@ -118,4 +118,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(EventList);
+)(withEventLoader(EventList));
