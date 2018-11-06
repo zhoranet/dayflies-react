@@ -1,6 +1,7 @@
 export { 
-    selectDate,
-    prevMonth,
-    nextMonth,
-    selectLanguage
+    fetchEvents,
+    fetchEventsStart,
+    fetchEventsFail,
+    fetchEventsSuccess,
+    selectLanguage    
 } from './calendar';

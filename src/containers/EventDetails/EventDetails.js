@@ -1,57 +1,17 @@
 import React, { Component } from "react";
 import classes from "./EventDetails.module.scss";
-import { connect } from "react-redux";
 import Button from "../../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as actions from "../../store/actions";
 import { Link } from "react-router-dom";
 import Swipeable from "react-swipeable";
-import moment from "moment";
-import * as dateUtils from "../../shared/dateUtils";
+import withEventLoader from "../../hoc/EventLoader/EventLoader";
 
 class EventDetails extends Component {
-	componentDidMount() {
-		this.unlisten = this.props.history.listen((location, action) => {
-			this.selectDate(this.getUrlLanguage(), this.getUrlDate());
-		});
+	getEventDetailsById = id => {
+		console.log("getEventDetailsById", this.props.events);
 
-		this.selectDate(this.getUrlLanguage(), this.getUrlDate());
-	}
-
-	componentWillUnmount() {
-		this.unlisten();
-	}
-
-	selectDate(language, date) {
-		if (
-			!this.props.events ||
-			!this.props.events.length ||
-			this.props.date.toISOString() !== date.toISOString() ||
-			this.props.language !== language
-		) {
-			this.props.onSelectDate(this.getUrlDate(), this.getUrlLanguage());
-		}
-	}
-
-	getUrlDate() {
-		if (this.props.match && this.props.match.params.date) {
-			return moment(this.props.match.params.date, "YYYY-MM-DD").toDate();
-		} else {
-			return new Date();
-		}
-	}
-
-	getUrlLanguage() {
-		return this.props.match.params.language || "en";
-	}
-
-	getDayUrl(language, date) {
-		return `${language}/${dateUtils.formatDate(date)}`;
-	}
-
-	getEventDetailsById = id => this.props.events.filter(x => x.id === id)[0];
-
-	formatDate = x => x.toISOString().split("T")[0];
+		return this.props.events.filter(x => x.id === id)[0];
+	};
 
 	findIndex = (array, id) => {
 		for (let index = 0; index < array.length; index++) {
@@ -71,9 +31,9 @@ class EventDetails extends Component {
 
 		if (index < 0) {
 			return -1;
-		} else {
-			index += step;
 		}
+
+		index += step;
 
 		if (index >= this.props.events.length) {
 			index = 0;
@@ -91,22 +51,20 @@ class EventDetails extends Component {
 
 	getEventUrl(step) {
 		const id = this.getEventDetailsId(this.props.match.params.id, step);
-		const date = this.getUrlDate();
-		const language = this.getUrlLanguage();
-		const dayUrl = this.getDayUrl(language, date);
-		return `/event/${dayUrl}/${id}`;
+		const dayUrl = this.props.getDayUrl(this.props.language, this.props.date);
+		return `/event${dayUrl}/${id}`;
 	}
 
 	swipe = step => this.props.history.replace(this.getEventUrl(step));
 
 	render() {
-		const date = this.getUrlDate();
-		const language = this.getUrlLanguage();
+		const date = this.props.date;
+		const language = this.props.language;
 		const eventDetails = this.getEventDetailsById(this.props.match.params.id);
 		let details = null;
 
 		if (eventDetails) {
-			const dateUrl = this.getDayUrl(language, date);
+			const dateUrl = this.props.getDayUrl(language, date);
 			const leftUrl = this.getEventUrl(-1);
 			const rightUrl = this.getEventUrl(1);
 			const paragraphList = eventDetails.full.split("\r\n").map((x, i) => <p key={i}>{x}</p>);
@@ -114,7 +72,7 @@ class EventDetails extends Component {
 			details = (
 				<React.Fragment>
 					<div className={classes.EventListHeader}>
-						<Link to={`/${dateUrl}`}>
+						<Link to={dateUrl}>
 							<Button btnType="NavBorderText">
 								<FontAwesomeIcon icon="angle-double-left" />
 								{" " + date.toDateString()}
@@ -152,21 +110,4 @@ class EventDetails extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		date: state.selectedDate,
-		language: state.selectedLanguage,
-		events: state.events
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onSelectDate: (date, language) => dispatch(actions.selectDate(date, language))
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(EventDetails);
+export default withEventLoader(EventDetails);
