@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from './components/Layout/Layout';
 import EventList from './containers/EventList/EventList';
 import EventDetails from './containers/EventDetails/EventDetails';
+import Login from './containers/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Route, Switch } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path="/" exact component={EventList} />
           <Route path="/event/:language/:date/:id" exact component={EventDetails} />   
           <Route path="/:language/:date" exact component={EventList} />
+          <Route path="/login" component={Login} />
                  
         </Switch>       
       </Layout>

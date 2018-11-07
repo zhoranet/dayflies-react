@@ -47,6 +47,16 @@
     @include button-bg(#5C9210);      
 }
 
+.Login {
+	@include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    border: solid 2px $yellow-sea;
+    color: $yellow-sea;
+    border-radius: 20px;
+    padding: 0 20px;
+    height: 40px;     
+}
+
 .Danger {
     @include button-bg(#944317);
 }

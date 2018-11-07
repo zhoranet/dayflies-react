@@ -1,0 +1,20 @@
+@import '../../styles/globals.scss';
+
+.Login {
+	padding: $column-gutter;
+	width: 100%;
+    text-align: center;
+	box-sizing: border-box;
+}
+
+.Input {					
+	width: 100%;
+	padding: $column-gutter;
+	box-sizing: border-box;
+}
+
+.Label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
