@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import classes from "./EventListEditor.module.scss";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import { withRouter } from "react-router-dom";
 
 export class EventListEditor extends Component {
+	componentDidMount() {
+		this.props.fetchEventsPage(0);
+	}
+
 	render() {
 		return (
 			<header>
@@ -10,3 +17,20 @@ export class EventListEditor extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		events: state.events.page
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchEventsPage: pageIndex => dispatch(actions.fetchEventsPage(pageIndex))
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(EventListEditor));

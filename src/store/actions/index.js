@@ -13,3 +13,7 @@ export {
 	authFail,
 	checkAuthTimeout
 } from './auth';
+
+export {
+	fetchEventsPage
+} from './events';
