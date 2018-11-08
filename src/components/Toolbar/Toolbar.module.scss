@@ -6,7 +6,12 @@
     height:auto;
     color: $kidnapper;
     background-color: $viking;
-    align-items: center;          
+	align-items: center;     	
+}
+
+.Toolbar a {
+	text-decoration: none;
+	color: $kidnapper;
 }
 
 .NavigationListConatiner {

@@ -2,19 +2,27 @@
 
 .Login {
 	padding: $column-gutter;
-	width: 100%;
-    text-align: center;
-	box-sizing: border-box;
+	width: 300px;  	 
+	margin: 0 auto;
+	padding: ($column-gutter * 2) 0;	
 }
 
 .Input {					
+	box-sizing: content-box;
 	width: 100%;
-	padding: $column-gutter;
-	box-sizing: border-box;
+	
+	input {
+		width: 100%;      
+		padding: 8px 8px;
+		margin: 24px 0;
+		border: 1px solid lightgrey;
+		display: block;
+		box-sizing: border-box;
+		border-radius: 18px;  
+		&:focus{
+			outline: none;
+  			box-shadow: 0px 0px 3px $yellow-sea;
+		}
+	}
 }
 
-.Label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-}

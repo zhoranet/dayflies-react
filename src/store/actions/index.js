@@ -5,3 +5,11 @@ export {
     fetchEventsSuccess,
     selectLanguage    
 } from './calendar';
+
+export {
+	auth,
+	authStart,
+	authSuccess,
+	authFail,
+	checkAuthTimeout
+} from './auth';

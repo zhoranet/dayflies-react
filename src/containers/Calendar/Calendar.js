@@ -105,8 +105,8 @@ class Calendar extends Component {
 
 const mapStateToProps = state => {
 	return {
-		date: state.selectedDate,
-		language: state.selectedLanguage
+		date: state.calendar.selectedDate,
+		language: state.calendar.selectedLanguage
 	};
 };
 

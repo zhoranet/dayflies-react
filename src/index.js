@@ -1,31 +1,38 @@
-import './styles/normalize.scss';
-import './styles/typography.scss';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import {Provider} from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, compose} from 'redux';
+import "./styles/normalize.scss";
+import "./styles/typography.scss";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import calendarReducer from "./store/reducers/calendar";
+import authReducer from "./store/reducers/auth";
 import createSagaMiddleware from "redux-saga";
-import { watchCalendar } from "./store/saga";
+import { watchCalendar, watchAuth } from "./store/saga";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const rootReducers = combineReducers({
+	calendar: calendarReducer,
+	auth: authReducer
+});
+
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(calendarReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
+const store = createStore(rootReducers, composeEnhancers(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(watchCalendar);
+sagaMiddleware.run(watchAuth);
 
 const app = (
-    <Provider store={store}>    
-        <BrowserRouter>
-            <App />        
-        </BrowserRouter>            
-    </Provider>    
+	<Provider store={store}>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</Provider>
 );
 
-ReactDOM.render( app, document.getElementById( 'root' ) );
+ReactDOM.render(app, document.getElementById("root"));
 registerServiceWorker();
