@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import classes from "./Calendar.module.scss";
 import Month from "../../components/Calendar/Month/Month";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
 import { withRouter } from "react-router-dom";
 import * as dateUtils from "../../shared/dateUtils";
 
@@ -110,13 +109,7 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onSelectDate: (date, language) => dispatch(actions.fetchEvents(date, language))
-	};
-};
-
 export default connect(
 	mapStateToProps,
-	mapDispatchToProps
+	null
 )(withRouter(Calendar));

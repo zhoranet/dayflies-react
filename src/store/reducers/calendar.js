@@ -20,6 +20,8 @@ const fetchEventsSuccess = (state, action) => {
 	});
 };
 
+
+
 const selectLanguage = (state, action) => {
 	return updateObject(state, { selectedLanguage: action.language });
 };

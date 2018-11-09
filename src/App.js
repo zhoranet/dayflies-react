@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Layout from "./components/Layout/Layout";
 import EventList from "./containers/EventList/EventList";
 import EventDetails from "./containers/EventDetails/EventDetails";
+import EventListEditor from "./containers/EventListEditor/EventListEditor";
 import Login from "./containers/Login/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Route, Switch } from "react-router-dom";
@@ -13,10 +14,11 @@ import {
 	faAngleDoubleLeft,
 	faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
-import { EventListEditor } from "./containers/EventListEditor/EventListEditor";
+
 library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight);
 
 class App extends Component {
+
 	render() {
 		return (
 			<Layout>

@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 export class EventListEditor extends Component {
 	componentDidMount() {
-		this.props.fetchEventsPage(0);
+		this.props.onFetchEventsPage(0);
 	}
 
 	render() {
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchEventsPage: pageIndex => dispatch(actions.fetchEventsPage(pageIndex))
+		onFetchEventsPage: pageIndex => dispatch(actions.fetchEventsPage(pageIndex))
 	};
 };
 

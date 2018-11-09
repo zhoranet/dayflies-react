@@ -15,5 +15,8 @@ export {
 } from './auth';
 
 export {
-	fetchEventsPage
+	fetchEventsPage,
+	fetchEventsPageStart,
+	fetchEventsPageSuccess,
+	fetchEventsPageFail
 } from './events';
