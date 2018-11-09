@@ -2,8 +2,7 @@ export {
     fetchEvents,
     fetchEventsStart,
     fetchEventsFail,
-    fetchEventsSuccess,
-    selectLanguage    
+    fetchEventsSuccess
 } from './calendar';
 
 export {

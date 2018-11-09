@@ -2,18 +2,23 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
+	pageIndex: 0,
 	page: [],
 	loading: false,
 	error: null
 };
 
 const fetchEventsPageStart = (state, action) => {
-	return updateObject(state, { loading: true });
+	return updateObject(state, { 
+		loading: true, 
+		pageIndex: action.pageIndex, 
+	});
 };
 
 const fetchEventsPageSuccess = (state, action) => {
 	return updateObject(state, {
 		page: action.page,
+		pageIndex: action.pageIndex,
 		loading: false,		
 	});
 };

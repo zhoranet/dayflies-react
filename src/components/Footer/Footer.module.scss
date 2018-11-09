@@ -1,50 +1,9 @@
 @import '../../styles//globals.scss';
 
-.Footer {  
-    flex: 0 0 auto;
-    padding: 20px;
-    color: $white;
-    background-color: $viking;
-}
-
-.NavigationItems {
-	margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    height: 100%;
-	flex-flow: row;
-	justify-content: space-around;
-    align-items: center;
-}
-
-.NavigationItem {
-	width: 90px;
-	height: 40px;
-	margin: 10px 0;
-    box-sizing: border-box;
-	display: block;
-	border: 1px solid $kidnapper;
-	border-radius: 18px;
-	text-align: center;
-	
-    
-}
-
-.NavigationItem a {
-	padding: 10px;
+.Footer {      
     color: $kidnapper;
-	text-decoration: none;
-	font-weight: bolder;
-    width: 100%;
-    box-sizing: border-box;
-    display: block;
-}
-
-.NavigationItem a:hover,
-.NavigationItem a:active,
-.NavigationItem a.active {
-    color: #40A4C8;
+	background-color: $viking;
+	flex: 0 0 auto;
 }
 
 .Copyright {

@@ -30,10 +30,4 @@ export const fetchEventsStart = () => {
   };
 };
 
-export const selectLanguage = language => {
-	return {
-		type: actionTypes.SELECT_LANGUAGE,
-		language: language
-	};
-};
 

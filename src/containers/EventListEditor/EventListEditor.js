@@ -3,15 +3,32 @@ import classes from "./EventListEditor.module.scss";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { withRouter } from "react-router-dom";
+import Pager from '../../components/Pager/Pager';
 
 export class EventListEditor extends Component {
 	componentDidMount() {
-		this.props.onFetchEventsPage(0);
+		this.props.onFetchEventsPage(0, 5);
 	}
+
+	textEllipsis(str, maxLength, { side = "end", ellipsis = "&hellip;" } = {}) {
+		if (str.length > maxLength) {
+		  switch (side) {
+			case "start":
+			  return ellipsis + str.slice(-(maxLength - ellipsis.length));
+			case "end":
+			default:
+			  return str.slice(0, maxLength - ellipsis.length) + ellipsis;
+		  }
+		}
+		return str;
+	  }
 
 	render() {
 
-		const events = this.props.events.map(x => <li><h3>{x.name}</h3></li>)
+		const events = this.props.events.map(x => <li key={x.id}><h3>{x.name}</h3></li>);
+
+		const index = this.props.pageIndex;
+		const pageSize = 5;
 
 		return (
 			
@@ -19,9 +36,15 @@ export class EventListEditor extends Component {
 				<header>
 					<h2>Editor</h2>
 				</header>
-				<ul>
-					{events}
-				</ul>
+				<div className={classes.Content}>
+					<ul>
+						{events}
+					</ul>
+				</div>
+				
+				<Pager 
+					prevPage={() => this.props.onFetchEventsPage(index, -pageSize)} 
+					nextPage={() => this.props.onFetchEventsPage(index, pageSize)}/>
 			</div>
 		);
 	}
@@ -29,13 +52,14 @@ export class EventListEditor extends Component {
 
 const mapStateToProps = state => {
 	return {
-		events: state.events.page
+		events: state.events.page,
+		pageIndex: state.events.pageIndex
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onFetchEventsPage: pageIndex => dispatch(actions.fetchEventsPage(pageIndex))
+		onFetchEventsPage: (pageIndex, pageSize) => dispatch(actions.fetchEventsPage(pageIndex, pageSize))		
 	};
 };
 
