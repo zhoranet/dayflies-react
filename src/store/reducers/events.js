@@ -13,7 +13,7 @@ const fetchEventsPageStart = (state, action) => {
 
 const fetchEventsPageSuccess = (state, action) => {
 	return updateObject(state, {
-		page: action.events,
+		page: action.page,
 		loading: false,		
 	});
 };
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.FETCH_EVENTS_PAGE_START:
 			return fetchEventsPageStart(state, action);
-		case actionTypes.FETCH_EVENTS_SUCCESS:
+		case actionTypes.FETCH_EVENTS_PAGE_SUCCESS:
 			return fetchEventsPageSuccess(state, action);
 		case actionTypes.FETCH_EVENTS_PAGE_FAIL: 
 			return fetchEventsPageFail(state, action);

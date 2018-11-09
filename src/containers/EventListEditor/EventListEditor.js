@@ -10,10 +10,19 @@ export class EventListEditor extends Component {
 	}
 
 	render() {
+
+		const events = this.props.events.map(x => <li><h3>{x.name}</h3></li>)
+
 		return (
-			<header>
-				<h1>Event List Editor</h1>
-			</header>
+			
+			<div className={classes.Editor}>
+				<header>
+					<h2>Editor</h2>
+				</header>
+				<ul>
+					{events}
+				</ul>
+			</div>
 		);
 	}
 }
