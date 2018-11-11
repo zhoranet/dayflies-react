@@ -9,16 +9,7 @@
 .Content {
 	flex: 1 0 auto;
 	
-	ul {
-		width:300px;
-
-		li {
-			
-			//white-space: nowrap;
-			//overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	}
+	
 }
 
 @media (min-width: 768px) {

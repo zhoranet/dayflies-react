@@ -14,6 +14,7 @@ import {
 	faAngleDoubleLeft,
 	faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
+import { TestBench } from "./containers/TestBench/TestBench";
 
 library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight);
 
@@ -27,7 +28,8 @@ class App extends Component {
 					<Route path="/event/:language/:date/:id" exact component={EventDetails} />
 					<Route path="/:language/:date" exact component={EventList} />
 					<Route path="/login" component={Login} />
-					<Route path="/edit/" component={EventListEditor} />
+					<Route path="/edit" component={EventListEditor} />
+					<Route path="/test" component={TestBench} />
 				</Switch>
 			</Layout>
 		);

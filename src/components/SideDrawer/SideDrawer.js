@@ -8,13 +8,12 @@ import { Link, withRouter } from "react-router-dom";
 import * as dateUtils from "../../shared/dateUtils";
 
 class SideDrawer extends Component {
-    
-    getDayUrl = (language, date) => `/${language}/${dateUtils.formatDate(date)}`;
-    
-    changeLanguage = event => {
-        this.props.onClose();	
-        this.props.history.push(this.getDayUrl(event.target.value, this.props.date));        
-    };
+	getDayUrl = (language, date) => `/${language}/${dateUtils.formatDate(date)}`;
+
+	changeLanguage = event => {
+		this.props.onClose();
+		this.props.history.push(this.getDayUrl(event.target.value, this.props.date));
+	};
 
 	render() {
 		const sideDrawerClass = classes.SideDrawer + " " + (this.props.open ? classes.Open : classes.Close);
@@ -29,10 +28,13 @@ class SideDrawer extends Component {
 					</div>
 					<ul className={classes.NavigationItems} onClick={this.props.onClose}>
 						<li className={classes.NavigationItem}>
-							<Link to="/login">Admin</Link>
+							<Link to="/">Home</Link>
 						</li>
 						<li className={classes.NavigationItem}>
 							<Link to="/about">About</Link>
+						</li>
+						<li className={classes.NavigationItem}>
+							<Link to="/login">Login</Link>
 						</li>
 					</ul>
 				</div>
@@ -42,10 +44,10 @@ class SideDrawer extends Component {
 }
 
 const mapStateToProps = state => {
-	return { 
-        language: state.calendar.selectedLanguage,
-        date: state.calendar.selectedDate
-    };
+	return {
+		language: state.calendar.selectedLanguage,
+		date: state.calendar.selectedDate
+	};
 };
 
 export default connect(
