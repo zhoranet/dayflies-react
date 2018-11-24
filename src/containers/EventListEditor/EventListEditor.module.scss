@@ -1,21 +1,16 @@
 @import '../../styles/globals.scss';
 
 .Editor {
-	padding: $column-gutter;
+	padding: 0 $column-gutter;
 	display: flex;
   	flex-direction: column;	    	
 }
 
 .Content {
-	flex: 1 0 auto;
-	
-	
+	display: table;	
 }
 
 @media (min-width: 768px) {
-	.Content {
-		ul {
-			width: 600px;
-		}
+	.Content {		
 	}
   }
