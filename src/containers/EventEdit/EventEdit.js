@@ -1,61 +1,34 @@
 import React, { Component } from "react";
 import classes from "./EventEdit.module.scss";
-import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions";
-import { withRouter } from "react-router-dom";
+import Form from "../../components/Form/Form";
 
 export class EventEdit extends Component {
-	state = {
-		inputElements: {
-			date: { elemtType: "input", label: "Date" },
-			name: { elemtType: "input", label: "Name" },
-			desc: { elemtType: "input", label: "Description" }
-		}
+
+	inputElements = {
+		date: { elemtType: "input", label: "Date", value: '2018-01-01' },
+		name: { elemtType: "input", label: "Name", value: 'The big event' },
+		desc: { elemtType: "input", label: "Description", value: '' }
 	};
 
-	onSubmitHandler = event => {
-		event.preventDefault();
-
-		// SUBMIT
-
-		console.log("Submit");
-	};
-
-	inputChangedHandler = (event, inputIdentifier) => {
-		const updatedFormElement = {
-			...updatedOrderForm[inputIdentifier]
-		};
-		updatedFormElement.value = event.target.value;
-	};
+	
+	submitHandler = formData => {		
+		console.log("Submit", formData);
+	};	
 
 	render() {
-		const formElementsArray = [];
-		for (let key in this.inputElements) {
-			formElementsArray.push({
-				id: key,
-				config: this.inputElements[key]
-			});
-		}
 
-		var elements = formElementsArray.map(x => (
-			<Input
-				key={x.id}
-				{...x.config}
-				value={x.config.value}
-				changed={event => this.inputChangedHandler(event, x.id)}
-			/>
-		));
-
-		return (
-			<form className={classes.EventEdit} onSubmit={this.onSubmitHandler}>
-				<h2>Edit</h2>
-				{elements}
-				<Button>OK</Button>
-			</form>
-		);
+		return(
+			<div className={classes.EventEdit}>
+				<Form inputElements={this.inputElements} submit={this.submitHandler}>
+					<Button btnType='NavBorderText'>SAVE</Button>	
+				</Form>
+			</div>
+			
+		);		
 	}
+
+	
 }
 
 export default EventEdit;
