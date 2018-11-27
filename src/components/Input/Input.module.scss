@@ -1,0 +1,15 @@
+@import '../../styles/globals.scss';
+
+.Input {
+	padding: 0 0 $column-gutter 0;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.Label {
+	display: block;
+}
+
+.InputElement {
+	width: 100%;
+}

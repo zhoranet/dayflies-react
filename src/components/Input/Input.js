@@ -3,12 +3,13 @@ import React from "react";
 import classes from "./Input.module.scss";
 
 const input = props => {
+
 	let inputElement = null;
 	let labelElement = null;
 
 	inputElement = (
 		<input
-			className={classes.Input}
+			className={classes.InputElement}
 			{...props.elementConfig}
 			value={props.value}
 			onChange={props.changed}
