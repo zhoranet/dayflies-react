@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import classes from "./EventList.module.scss";
-import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swipeable from "react-swipeable";
-import withEventLoader from "../../hoc/EventLoader/EventLoader";
+import classes from "./EventList.module.scss";
+import Button from "../../../components/Button/Button";
+import withEventLoader from "../../../hoc/EventLoader/EventLoader";
 
 export class EventList extends Component {
 	incrementDay(date, step) {
@@ -37,8 +37,7 @@ export class EventList extends Component {
 					flickThreshold={0.8}
 					delta={50}
 					onSwipedLeft={() => this.swipe(nextDayUrl)}
-					onSwipedRight={() => this.swipe(prevDayUrl)}
-				>
+					onSwipedRight={() => this.swipe(prevDayUrl)}>
 					<div className={classes.EventListHeader}>
 						<Link to={prevDayUrl}>
 							<Button btnType="NavCircle">

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import classes from "./EventDetails.module.scss";
-import Button from "../../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Swipeable from "react-swipeable";
-import withEventLoader from "../../hoc/EventLoader/EventLoader";
+import classes from "./EventDetails.module.scss";
+import withEventLoader from "../../../hoc/EventLoader/EventLoader";
+import Button from "../../../components/Button/Button";
 
 class EventDetails extends Component {
 	getEventDetailsById = id => {
@@ -83,8 +83,7 @@ class EventDetails extends Component {
 						flickThreshold={0.8}
 						delta={50}
 						onSwipedLeft={() => this.swipe(1)}
-						onSwipedRight={() => this.swipe(-1)}
-					>
+						onSwipedRight={() => this.swipe(-1)}>
 						<div className={classes.EventDetailsHeader}>
 							<Link to={leftUrl} replace>
 								<Button btnType="NavCircle">

@@ -2,26 +2,36 @@ import { put } from "redux-saga/effects";
 import * as actions from "../actions";
 import axios from "../../axios-calendar";
 
-export function* fetchEventsPageSaga(action) {
-	yield put(actions.fetchEventsPageStart(action.pageIndex));
+const filterByDate = (events, date) => {
+	let index = date.getDate() - 1;
 
+	if (index > 15) index = index - 15;
+	const randomSequence = "245913152879152614361725113313795819";
+	let pair = randomSequence.substring(index * 2, index * 2 + 2);
+	return events.filter(
+		x =>
+			parseInt(x.id, 10) >= parseInt(pair.charAt(0), 10) &&
+			parseInt(x.id, 10) <= parseInt(pair.charAt(1), 10)
+	);
+};
+
+export function* fetchEventsSaga(action) {
+	yield put(actions.fetchEventsStart());
+	
 	try {
-		const res = yield axios.get(
-			`events/en.json?orderBy="$key"&startAt="${action.pageIndex}"&limitToFirst=${Math.abs(action.pageSize)}`
-		);
+		const res = yield axios.get(`/events/${action.language}.json`);
 		const fetchedEvents = [];
 		for (let key in res.data) {
-			if (res.data[key]) {
-				fetchedEvents.push({
-					...res.data[key],
-					id: key
-				});
-			}
-			
+			fetchedEvents.push({
+				...res.data[key],
+				id: key
+			});
 		}
 
-		yield put(actions.fetchEventsPageSuccess(action.pageIndex + action.pageSize, fetchedEvents));
+		const filteredEvents = filterByDate(fetchedEvents, action.date);
+
+		yield put(actions.fetchEventsSuccess(action.date, action.language, filteredEvents));
 	} catch (error) {
-		yield put(actions.fetchEventsPageFail(error));
+		yield put(actions.fetchEventsFail(error));
 	}
 }

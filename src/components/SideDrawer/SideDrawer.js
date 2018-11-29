@@ -45,8 +45,8 @@ class SideDrawer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		language: state.calendar.selectedLanguage,
-		date: state.calendar.selectedDate
+		language: state.events.selectedLanguage,
+		date: state.events.selectedDate
 	};
 };
 

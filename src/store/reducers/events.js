@@ -2,42 +2,30 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-	pageIndex: 0,
-	page: [],
-	loading: false,
-	error: null
+	selectedDate: new Date(),
+	events: [],
+	selectedLanguage: "en"
 };
 
-const fetchEventsPageStart = (state, action) => {
-	return updateObject(state, { 
-		loading: true, 
-		pageIndex: action.pageIndex, 
-	});
+const fetchEventsStart = (state, action) => {
+	return updateObject(state, { loading: true });
 };
 
-const fetchEventsPageSuccess = (state, action) => {
+const fetchEventsSuccess = (state, action) => {
 	return updateObject(state, {
-		page: action.page,
-		pageIndex: action.pageIndex,
-		loading: false,		
+		events: action.events,
+		loading: false,
+		selectedDate: action.date,
+		selectedLanguage: action.language
 	});
 };
-
-const fetchEventsPageFail = (state, action) => {
-	return updateObject(state, {
-		error: action.error,
-		loading: false
-	});
-}
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.FETCH_EVENTS_PAGE_START:
-			return fetchEventsPageStart(state, action);
-		case actionTypes.FETCH_EVENTS_PAGE_SUCCESS:
-			return fetchEventsPageSuccess(state, action);
-		case actionTypes.FETCH_EVENTS_PAGE_FAIL: 
-			return fetchEventsPageFail(state, action);
+		case actionTypes.FETCH_EVENTS_START:
+			return fetchEventsStart(state, action);
+		case actionTypes.FETCH_EVENTS_SUCCESS:
+			return fetchEventsSuccess(state, action);
 		default:
 			return state;
 	}

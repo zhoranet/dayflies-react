@@ -1,8 +1,8 @@
 import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
-import { fetchEventsSaga } from "./calendar";
+import { fetchEventsSaga } from "./events";
 import { authUserSaga } from "./auth";
-import { fetchEventsPageSaga } from "./events";
+import { fetchOccasionsPageSaga, updateOccasionSaga } from "./occasions";
 
 export function* watchCalendar() {
 	yield takeEvery(actionTypes.FETCH_EVENTS, fetchEventsSaga);
@@ -12,6 +12,7 @@ export function* watchAuth() {
 	yield takeEvery(actionTypes.AUTH_USER, authUserSaga);
 }
 
-export function* watchEvents() {
-	yield takeEvery(actionTypes.FETCH_EVENTS_PAGE, fetchEventsPageSaga);
+export function* watchOccasions() {
+	yield takeEvery(actionTypes.FETCH_OCCASIONS_PAGE, fetchOccasionsPageSaga);
+	yield takeEvery(actionTypes.UPDATE_OCCASION, updateOccasionSaga);
 }

@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./EventListRow.module.scss";
+import classes from "./OccasionRow.module.scss";
 import { Link } from "react-router-dom";
 
-const eventListRow = props => {
+const occasionRow = props => {
 	return (
 		<div className={classes.EventListRow}>
 			<div className={classes.ColumnId}>{props.rowId}</div>
 			<div className={classes.ColumnName}>
 				<div className={classes.FixedHeightContent}>
-					<Link className={classes.More} to={`/edit/${props.rowId}`} >
+					<Link className={classes.More} to={`/edit/${props.rowId}`}>
 						{props.name}
 					</Link>
 				</div>
@@ -17,4 +17,4 @@ const eventListRow = props => {
 	);
 };
 
-export default eventListRow;
+export default occasionRow;

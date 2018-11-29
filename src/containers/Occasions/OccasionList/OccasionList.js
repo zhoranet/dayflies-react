@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import classes from "./EventListEditor.module.scss";
+import classes from "./OccasionList.module.scss";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../../store/actions";
 import { withRouter } from "react-router-dom";
-import Pager from "../../components/Pager/Pager";
-import EventListRow from "../../components/Editor/EventListRow/EventListRow";
+import Pager from "../../../components/Pager/Pager";
+import OccasionRow from "../../../components/OccasionRow/OccasionRow";
 
-export class EventListEditor extends Component {
+export class OccasionList extends Component {
 	sizes = {
 		small: "small",
 		medium: "medium",
@@ -66,7 +66,7 @@ export class EventListEditor extends Component {
 	}
 
 	render() {
-		const events = this.props.events.map(x => <EventListRow key={x.id} rowId={x.id} name={x.name} />);
+		const events = this.props.events.map(x => <OccasionRow key={x.id} rowId={x.id} name={x.name} />);
 		const index = this.props.pageIndex;
 
 		return (
@@ -97,18 +97,18 @@ const debounce = (func, delay) => {
 
 const mapStateToProps = state => {
 	return {
-		events: state.events.page,
-		pageIndex: state.events.pageIndex
+		events: state.occasions.page,
+		pageIndex: state.occasions.pageIndex		
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onFetchEventsPage: (pageIndex, pageSize) => dispatch(actions.fetchEventsPage(pageIndex, pageSize))
+		onFetchEventsPage: (pageIndex, pageSize) => dispatch(actions.fetchOccasionsPage(pageIndex, pageSize))
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(withRouter(EventListEditor));
+)(withRouter(OccasionList));

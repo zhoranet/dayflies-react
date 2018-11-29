@@ -57,9 +57,9 @@ const withEventLoader = WrappedComponent => {
 
 	const mapStateToProps = state => {
 		return {
-			date: state.calendar.selectedDate,
-			language: state.calendar.selectedLanguage,
-			events: state.calendar.events
+			date: state.events.selectedDate,
+			language: state.events.selectedLanguage,
+			events: state.events.events
 		};
 	};
 

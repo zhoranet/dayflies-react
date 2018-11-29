@@ -3,7 +3,7 @@ export {
     fetchEventsStart,
     fetchEventsFail,
     fetchEventsSuccess
-} from './calendar';
+} from './events';
 
 export {
 	auth,
@@ -14,8 +14,13 @@ export {
 } from './auth';
 
 export {
-	fetchEventsPage,
-	fetchEventsPageStart,
-	fetchEventsPageSuccess,
-	fetchEventsPageFail
-} from './events';
+	fetchOccasionsPage,
+	fetchOccasionsPageStart,
+	fetchOccasionsPageSuccess,
+	fetchOccasionsPageFail,
+
+	updateOccasion,
+	updateOccasionStart,
+	updateOccasionFail,
+	updateOccasionSuccess
+} from './occasions';

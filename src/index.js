@@ -7,18 +7,18 @@ import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import calendarReducer from "./store/reducers/calendar";
-import authReducer from "./store/reducers/auth";
 import eventsReducer from "./store/reducers/events";
+import authReducer from "./store/reducers/auth";
+import occasionsReducer from "./store/reducers/occasions";
 import createSagaMiddleware from "redux-saga";
-import { watchCalendar, watchAuth, watchEvents } from "./store/saga";
+import { watchCalendar, watchAuth, watchOccasions } from "./store/saga";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducers = combineReducers({
-	calendar: calendarReducer,
 	auth: authReducer,
-	events: eventsReducer
+	events: eventsReducer,
+	occasions: occasionsReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -27,7 +27,7 @@ const store = createStore(rootReducers, composeEnhancers(applyMiddleware(sagaMid
 
 sagaMiddleware.run(watchCalendar);
 sagaMiddleware.run(watchAuth);
-sagaMiddleware.run(watchEvents);
+sagaMiddleware.run(watchOccasions);
 
 const app = (
 	<Provider store={store}>
