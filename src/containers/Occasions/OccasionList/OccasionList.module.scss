@@ -10,6 +10,10 @@
 	display: table;	
 }
 
+.AddNewLink {
+	padding-bottom: $column-gutter;
+}
+
 @media (min-width: 768px) {
 	.Content {		
 	}

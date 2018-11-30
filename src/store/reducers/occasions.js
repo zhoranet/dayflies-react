@@ -50,6 +50,12 @@ const updateOccasionFail = (state, action) => {
 	});
 };
 
+const selectOccasion = (state, action) => {
+	return updateObject(state, {
+		occasionDetails: action.occasionDetails
+	});
+};
+
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.FETCH_OCCASIONS_PAGE_START:
@@ -64,6 +70,8 @@ const reducer = (state = initialState, action) => {
 			return updateOccasionSuccess(state, action);
 		case actionTypes.UPDATE_OCCASION_FAIL:
 			return updateOccasionFail(state, action);
+		case actionTypes.SELECT_OCCASION:
+			return selectOccasion(state, action);
 		default:
 			return state;
 	}

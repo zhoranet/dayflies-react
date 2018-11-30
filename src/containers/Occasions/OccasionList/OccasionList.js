@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import classes from "./OccasionList.module.scss";
 import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+
 import * as actions from "../../../store/actions";
-import { withRouter } from "react-router-dom";
 import Pager from "../../../components/Pager/Pager";
 import OccasionRow from "../../../components/OccasionRow/OccasionRow";
+import Button from "../../../components/Button/Button";
 
 export class OccasionList extends Component {
 	sizes = {
@@ -65,15 +67,31 @@ export class OccasionList extends Component {
 		window.removeEventListener("resize", debounce(this.resize, 100));
 	}
 
+	selectOccasion = occasion => {
+		this.onSelectOccasion(occasion);
+	};
+
 	render() {
-		const events = this.props.events.map(x => <OccasionRow key={x.id} rowId={x.id} name={x.name} />);
+		const events = this.props.events.map(x => (
+			<OccasionRow
+				key={x.id}
+				date={x.date}
+				title={x.title}
+				linkTo={`/edit/${x.id}`}
+				clicked={() => this.selectOccasion(x)}
+			/>
+		));
 		const index = this.props.pageIndex;
 
 		return (
 			<div className={classes.Editor}>
 				<header>
-					<h2>Edit events</h2>
+					<h2>Add / Update events</h2>
 				</header>
+				<Link className={classes.AddNewLink} to="/edit/new">
+					<Button btnType="NavBorderText">Add New</Button>
+				</Link>
+
 				<div className={classes.Content}>{events}</div>
 
 				<Pager
@@ -98,13 +116,14 @@ const debounce = (func, delay) => {
 const mapStateToProps = state => {
 	return {
 		events: state.occasions.page,
-		pageIndex: state.occasions.pageIndex		
+		pageIndex: state.occasions.pageIndex
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onFetchEventsPage: (pageIndex, pageSize) => dispatch(actions.fetchOccasionsPage(pageIndex, pageSize))
+		onFetchEventsPage: (pageIndex, pageSize) => dispatch(actions.fetchOccasionsPage(pageIndex, pageSize)),
+		onSelectOccasion: occasionDetails => dispatch(actions.selectOccasion(occasionDetails))
 	};
 };
 

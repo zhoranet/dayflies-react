@@ -22,5 +22,7 @@ export {
 	updateOccasion,
 	updateOccasionStart,
 	updateOccasionFail,
-	updateOccasionSuccess
+	updateOccasionSuccess,
+
+	selectOccasion
 } from './occasions';

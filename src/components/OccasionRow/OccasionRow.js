@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const occasionRow = props => {
 	return (
 		<div className={classes.EventListRow}>
-			<div className={classes.ColumnId}>{props.rowId}</div>
+			<div className={classes.ColumnId}>{props.date}</div>
 			<div className={classes.ColumnName}>
-				<div className={classes.FixedHeightContent}>
-					<Link className={classes.More} to={`/edit/${props.rowId}`}>
-						{props.name}
+				<div className={classes.FixedHeightContent} onClick={props.clicked}>
+					<Link className={classes.More} to={props.linkTo}>
+						{props.title}
 					</Link>
 				</div>
 			</div>

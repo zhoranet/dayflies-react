@@ -29,11 +29,19 @@ export const fetchOccasionsPageFail = error => {
 		error: error
 	};
 };
+
 export const updateOccasion = (token, occasionDetails) => {
 	return {
 		type: actionTypes.UPDATE_OCCASION,
 		occasionDetails: occasionDetails,
 		token: token
+	};
+};
+
+export const selectOccasion = (occasionDetails) => {
+	return {
+		type: actionTypes.SELECT_OCCASION,
+		occasionDetails: occasionDetails
 	};
 };
 

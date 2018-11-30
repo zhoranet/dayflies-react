@@ -1,6 +1,6 @@
 import { put } from "redux-saga/effects";
 import * as actions from "../actions";
-import axios from "../../axios-calendar";
+import axios from "../../axios-firebase";
 
 const filterByDate = (events, date) => {
 	let index = date.getDate() - 1;

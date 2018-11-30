@@ -7,7 +7,7 @@ import Form from "../../../components/Form/Form";
 
 export class OccasionDetails extends Component {
 	inputElements = {
-		name: { elementType: "input", label: "Name", value: "The big event" },
+		title: { elementType: "input", label: "Name", value: "The big event" },
 		date: { elementType: "input", label: "Date", value: "2018-01-01" },
 		repeat: {
 			elementType: "select",
@@ -20,15 +20,22 @@ export class OccasionDetails extends Component {
 				]
 			}
 		},
-		desc: { elementType: "input", label: "Description", value: "" }
+		description: { elementType: "input", label: "Description", value: "" }
 	};
 
 	submitHandler = formData => {
-		console.log("Submit", formData);
+		formData.id = this.props.occasionDetails.id;
 		this.props.onUpdateOccasion(this.props.token, formData);
 	};
 
 	render() {
+		if (this.props.occasionDetails) {
+			this.inputElements.date.value = this.props.occasionDetails.date;
+			this.inputElements.title.value = this.props.occasionDetails.title;
+			this.inputElements.description.value = this.props.occasionDetails.decription;
+			this.inputElements.repeat.value = this.props.occasionDetails.repeat;
+		}
+
 		return (
 			<div className={classes.EventEdit}>
 				<Form inputElements={this.inputElements} submit={this.submitHandler}>
