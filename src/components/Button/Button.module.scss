@@ -92,6 +92,16 @@
     height: 40px;    
 }
 
+.EditRow {
+	@include button-bg(rgba(0,0,0,0)); 
+    font-weight: bolder;
+    border: none 0;
+    color: $yellow-sea;
+	border-radius: 19px;
+	height: 40px;
+	width: 40px;
+}
+
 .ToggleSideDrawer {
     @include button-bg(rgba(0,0,0,0)); 
     font-weight: bolder;

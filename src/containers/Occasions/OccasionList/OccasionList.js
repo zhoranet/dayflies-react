@@ -68,18 +68,13 @@ export class OccasionList extends Component {
 	}
 
 	selectOccasion = occasion => {
-		this.onSelectOccasion(occasion);
+		this.props.onSelectOccasion(occasion);
+		this.props.history.push(`/edit/${occasion.id}`);
 	};
 
 	render() {
 		const events = this.props.events.map(x => (
-			<OccasionRow
-				key={x.id}
-				date={x.date}
-				title={x.title}
-				linkTo={`/edit/${x.id}`}
-				clicked={() => this.selectOccasion(x)}
-			/>
+			<OccasionRow key={x.id} date={x.date} title={x.title} clicked={() => this.selectOccasion(x)} />
 		));
 		const index = this.props.pageIndex;
 

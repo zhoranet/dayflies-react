@@ -24,7 +24,10 @@ export class OccasionDetails extends Component {
 	};
 
 	submitHandler = formData => {
-		formData.id = this.props.occasionDetails.id;
+		if (this.props.occasionDetails && this.props.occasionDetails.id) {
+			formData.id = this.props.occasionDetails.id;
+		}
+
 		this.props.onUpdateOccasion(this.props.token, formData);
 	};
 
@@ -32,7 +35,7 @@ export class OccasionDetails extends Component {
 		if (this.props.occasionDetails) {
 			this.inputElements.date.value = this.props.occasionDetails.date;
 			this.inputElements.title.value = this.props.occasionDetails.title;
-			this.inputElements.description.value = this.props.occasionDetails.decription;
+			this.inputElements.description.value = this.props.occasionDetails.description;
 			this.inputElements.repeat.value = this.props.occasionDetails.repeat;
 		}
 

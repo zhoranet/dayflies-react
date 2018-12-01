@@ -1,5 +1,12 @@
+@import '../../styles/globals.scss';
+
 .EventListRow {
 	display: table-row;	
+}
+
+.ColumnEdit{
+	width: 60px;
+	display: table-cell;	
 }
 
 .ColumnId{
@@ -8,7 +15,7 @@
 }
 
 .ColumnName {
-	width: 80%;
+	width: auto;
 	display: table-cell;
 	
 }

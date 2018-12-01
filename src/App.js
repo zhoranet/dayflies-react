@@ -13,11 +13,13 @@ import {
 	faChevronLeft,
 	faBars,
 	faAngleDoubleLeft,
-	faAngleDoubleRight
+	faAngleDoubleRight,
+	faEdit,
+	faPen
 } from "@fortawesome/free-solid-svg-icons";
 import { TestBench } from "./containers/TestBench/TestBench";
 
-library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight);
+library.add(faEnvelope, faChevronRight, faChevronLeft, faBars, faAngleDoubleLeft, faAngleDoubleRight, faEdit, faPen);
 
 class App extends Component {
 	render() {
